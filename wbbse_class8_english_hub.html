@@ -1,0 +1,3284 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WBBSE Class 8 English Interactive Study Hub | Blossoms & Grammar</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#0284c7',
+              600: '#0369a1',
+              700: '#075985',
+              800: '#0c4a6e',
+              900: '#082f49',
+            },
+            accent: {
+              400: '#a855f7',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'bounce-subtle': 'bounceSubtle 0.8s ease-in-out infinite',
+            'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both',
+          },
+          keyframes: {
+            bounceSubtle: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-4px)' },
+            },
+            shake: {
+              '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
+              '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
+              '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
+              '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Card Flip 3D Styles */
+    .perspective-1000 {
+      perspective: 1200px;
+    }
+    .transform-style-preserve-3d {
+      transform-style: preserve-3d;
+    }
+    .backface-hidden {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .rotate-y-180 {
+      transform: rotateY(180deg);
+    }
+    .transition-transform-700 {
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.5);
+    }
+
+    /* Drag over glow */
+    .drag-over-active {
+      border-color: #3b82f6 !important;
+      background-color: rgba(59, 130, 246, 0.15) !important;
+      transform: scale(1.03);
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+    }
+
+    /* Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen flex flex-col font-sans transition-colors duration-300 select-none">
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- TOP APP HEADER -->
+  <header class="sticky top-0 z-40 backdrop-blur-md bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-800 px-4 py-3 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Brand & Badge -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-sky-500/20 font-bold text-lg">
+          W
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="font-extrabold text-base md:text-lg tracking-tight text-slate-900 dark:text-white leading-tight">
+              WBBSE Class 8 English Hub
+            </h1>
+            <span class="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-sky-100 text-sky-700 dark:bg-sky-950 dark:text-sky-300 border border-sky-300 dark:border-sky-800">
+              Blossoms & Grammar
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 dark:text-slate-400 hidden sm:block">
+            Lessons 10–13 • 7 Core Grammar Lessons • Flashcards & Drag-and-Drop
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Stats & Actions -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Streak Counter -->
+        <div class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 text-amber-600 dark:text-amber-400 text-xs font-semibold" title="Current streak">
+          <svg class="w-4 h-4 fill-current animate-bounce-subtle" viewBox="0 0 24 24">
+            <path d="M12 23c6.075 0 11-4.925 11-11 0-4.004-2.146-7.51-5.361-9.458a.75.75 0 00-1.127.768C16.89 5.342 17 7.411 17 9c0 1.657-1.343 3-3 3s-3-1.343-3-3c0-2.31 1.258-5.34 2.898-7.447a.75.75 0 00-.987-1.106C8.755 3.013 1 8.5 1 15c0 4.418 3.582 8 8 8 1 0 2.05-.183 3-.523V23z"/>
+          </svg>
+          <span>Streak: <b id="streakCount">0</b></span>
+        </div>
+
+        <!-- Score Badge -->
+        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 text-xs font-semibold" title="Accuracy & Score">
+          <svg class="w-4 h-4 fill-none stroke-current" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span><b id="scoreCount">0</b> / <span id="totalAttempted">0</span></span>
+        </div>
+
+        <!-- Sound Toggle -->
+        <button id="soundToggleBtn" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition" title="Toggle Sound Feedback">
+          <svg id="soundOnIcon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+          </svg>
+          <svg id="soundOffIcon" class="w-5 h-5 hidden text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+          </svg>
+        </button>
+
+        <!-- Voice Command Button -->
+        <button id="voiceCommandBtn" class="relative p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition" title="Toggle Voice Commands">
+          <div id="micPulse" class="absolute inset-0 rounded-xl bg-red-500/20 animate-ping hidden"></div>
+          <svg id="micIcon" class="w-5 h-5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+          </svg>
+        </button>
+
+        <!-- Speech Settings / API Key Modal Button -->
+        <button id="speechConfigBtn" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition" title="Voice Settings & API Key">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </button>
+
+        <!-- Theme Switcher (Top Right Corner) -->
+        <button id="themeToggleBtn" class="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-amber-500 dark:text-sky-400 border border-slate-300 dark:border-slate-700 shadow-sm transition-all duration-300" title="Toggle Light / Dark Theme">
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg id="sunIcon" class="w-5 h-5 hidden dark:block transform hover:rotate-90 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 9h-1m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          <!-- Moon Icon (shown in light mode) -->
+          <svg id="moonIcon" class="w-5 h-5 block dark:hidden transform hover:-rotate-12 transition-transform duration-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ENHANCED REAL-TIME VOICE COMMAND ASSISTANT BAR -->
+  <div id="voiceStatusBanner" class="bg-gradient-to-r from-indigo-700 via-indigo-600 to-sky-700 text-white text-xs px-4 py-2.5 shadow-md border-b border-indigo-400/30 transition-all duration-300">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+      
+      <!-- Mic Status & Real-time Transcript -->
+      <div class="flex items-center gap-3 w-full md:w-auto">
+        <div class="flex items-center gap-1.5 shrink-0">
+          <span id="voiceLiveIndicator" class="relative flex h-3 w-3">
+            <span id="voicePulseRing" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75 hidden"></span>
+            <span id="voiceDot" class="relative inline-flex rounded-full h-3 w-3 bg-emerald-400"></span>
+          </span>
+          <span id="voiceStatusTitle" class="font-bold tracking-tight">Voice Ready:</span>
+        </div>
+
+        <!-- Live Transcript Bubble -->
+        <div class="flex-1 md:flex-none flex items-center gap-2 bg-black/25 px-3 py-1 rounded-xl border border-white/10 overflow-hidden">
+          <svg class="w-3.5 h-3.5 text-sky-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+          </svg>
+          <span id="voiceStatusText" class="text-xs text-sky-100 truncate max-w-xs md:max-w-md italic">
+            Click mic to start, or use quick command chips below...
+          </span>
+        </div>
+      </div>
+
+      <!-- Quick Command Simulator Chips & Fallback Input -->
+      <div class="flex flex-wrap items-center gap-1.5 w-full md:w-auto justify-end">
+        <span class="text-[10px] uppercase font-bold text-sky-200 hidden lg:inline">Quick Test:</span>
+        <button type="button" class="voice-chip px-2 py-0.5 rounded-lg bg-white/15 hover:bg-white/30 text-[11px] font-semibold transition" data-voice-cmd="option a">A</button>
+        <button type="button" class="voice-chip px-2 py-0.5 rounded-lg bg-white/15 hover:bg-white/30 text-[11px] font-semibold transition" data-voice-cmd="option b">B</button>
+        <button type="button" class="voice-chip px-2 py-0.5 rounded-lg bg-white/15 hover:bg-white/30 text-[11px] font-semibold transition" data-voice-cmd="option c">C</button>
+        <button type="button" class="voice-chip px-2 py-0.5 rounded-lg bg-white/15 hover:bg-white/30 text-[11px] font-semibold transition" data-voice-cmd="option d">D</button>
+        <button type="button" class="voice-chip px-2 py-0.5 rounded-lg bg-white/15 hover:bg-white/30 text-[11px] font-semibold transition" data-voice-cmd="next">Next</button>
+        <button type="button" class="voice-chip px-2 py-0.5 rounded-lg bg-white/15 hover:bg-white/30 text-[11px] font-semibold transition" data-voice-cmd="flip">Flip</button>
+        <button type="button" class="voice-chip px-2 py-0.5 rounded-lg bg-white/15 hover:bg-white/30 text-[11px] font-semibold transition" data-voice-cmd="speak">Read</button>
+        
+        <!-- Voice simulation text input -->
+        <div class="relative ml-1">
+          <input type="text" id="voiceSimInput" placeholder="Type voice command & press Enter..." class="text-[11px] pl-2.5 pr-2 py-0.5 rounded-lg bg-black/30 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-1 focus:ring-sky-300 w-48" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN APP CONTAINER -->
+  <main class="max-w-6xl mx-auto w-full px-4 py-6 flex-1 flex flex-col gap-6">
+
+    <!-- NAVIGATION & FILTER PILLS -->
+    <section class="flex flex-col gap-3">
+      <!-- Lesson Category Scrollable Tabs -->
+      <div class="flex items-center justify-between gap-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Chapters & Modules:</span>
+        <span id="questionCountBadge" class="text-xs font-semibold px-2 py-0.5 rounded-md bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+          Showing 0 questions
+        </span>
+      </div>
+
+      <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-thin">
+        <button data-filter="all" class="category-btn active px-3.5 py-1.5 rounded-xl text-xs font-bold whitespace-nowrap transition-all shadow-sm bg-sky-600 text-white">
+          🌟 All Topics
+        </button>
+        <button data-filter="l10" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 dark:hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          📖 L-10: Tales of Childhood
+        </button>
+        <button data-filter="l11" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 dark:hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🚂 L-11: Midnight Express
+        </button>
+        <button data-filter="l12" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 dark:hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🚪 L-12: Someone
+        </button>
+        <button data-filter="l13" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 dark:hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🌳 L-13: Man Who Planted Trees
+        </button>
+        <button data-filter="grammar" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all bg-indigo-50 dark:bg-indigo-950/50 border border-indigo-200 dark:border-indigo-800 hover:border-indigo-500 text-indigo-700 dark:text-indigo-300">
+          ✍️ All Grammar (49+)
+        </button>
+        <button data-filter="g_clause" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🔹 Clauses
+        </button>
+        <button data-filter="g_modals" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🔹 Modals
+        </button>
+        <button data-filter="g_infinitives" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🔹 Infinitives
+        </button>
+        <button data-filter="g_affix" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🔹 Prefix & Suffix
+        </button>
+        <button data-filter="g_voice" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🔹 Voice Change
+        </button>
+        <button data-filter="g_narration" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🔹 Narration Change
+        </button>
+        <button data-filter="g_prep" class="category-btn px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-sky-500 text-slate-700 dark:text-slate-300">
+          🔹 Articles & Prepositions
+        </button>
+      </div>
+
+      <!-- Mode & Format Toolbar -->
+      <div class="flex flex-wrap items-center justify-between gap-3 bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        
+        <!-- Type Filter: All / MCQ Flashcard / Drag & Drop -->
+        <div class="flex items-center gap-1.5 bg-slate-100 dark:bg-slate-800/80 p-1 rounded-xl text-xs font-semibold">
+          <button id="modeAll" class="format-btn px-3 py-1.5 rounded-lg transition bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm">
+            All Types
+          </button>
+          <button id="modeMcq" class="format-btn px-3 py-1.5 rounded-lg transition text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+            🃏 Flashcard MCQ
+          </button>
+          <button id="modeDnd" class="format-btn px-3 py-1.5 rounded-lg transition text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+            🎯 Drag & Drop
+          </button>
+        </div>
+
+        <!-- Controls: Search & Shuffle -->
+        <div class="flex items-center gap-2 flex-1 max-w-sm">
+          <div class="relative w-full">
+            <input type="text" id="searchInput" placeholder="Search questions, authors, rules..." class="w-full text-xs pl-8 pr-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-500" />
+            <svg class="w-4 h-4 absolute left-2.5 top-2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+          </div>
+          <button id="shuffleBtn" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5 border border-slate-200 dark:border-slate-700 whitespace-nowrap transition" title="Shuffle Questions">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+            </svg>
+            <span>Shuffle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESS BAR -->
+    <div class="w-full bg-slate-200 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
+      <div id="progressBar" class="bg-gradient-to-r from-sky-500 to-indigo-600 h-2 rounded-full transition-all duration-300" style="width: 0%"></div>
+    </div>
+
+    <!-- MAIN INTERACTIVE QUESTION VIEW AREA -->
+    <section class="flex-1 flex flex-col justify-center items-center relative min-h-[460px]">
+
+      <!-- FLASHCARD MCQ CONTAINER (PERSPECTIVE 3D) -->
+      <div id="flashcardMcqContainer" class="w-full max-w-2xl perspective-1000">
+        <div id="cardInner" class="relative w-full min-h-[420px] transform-style-preserve-3d transition-transform-700">
+          
+          <!-- CARD FRONT (QUESTION + 4 MCQ OPTIONS) -->
+          <div class="card-face absolute inset-0 w-full h-full backface-hidden rounded-3xl p-6 md:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl flex flex-col justify-between">
+            <div>
+              <!-- Top Badges & Card Controls -->
+              <div class="flex items-center justify-between gap-2 mb-4">
+                <div class="flex items-center gap-2">
+                  <span id="fcTopicBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-950/80 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">
+                    Lesson 10
+                  </span>
+                  <span id="fcTypeBadge" class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+                    Flashcard MCQ
+                  </span>
+                </div>
+
+                <div class="flex items-center gap-1.5">
+                  <!-- Text to Speech Button -->
+                  <button id="fcSpeakBtn" class="p-2 rounded-xl text-slate-500 hover:text-sky-600 dark:text-slate-400 dark:hover:text-sky-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Read Question Aloud">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    </svg>
+                  </button>
+                  <!-- Flip to Details Button -->
+                  <button id="fcFlipBtn" class="flex items-center gap-1 text-xs font-semibold text-slate-500 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-indigo-400 px-2.5 py-1 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Flip Card to view Detailed Notes">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                    </svg>
+                    <span>Flip</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Question Text -->
+              <div class="mb-6">
+                <span id="fcQuestionNumber" class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block mb-1">
+                  Question 1 of 50
+                </span>
+                <h2 id="fcQuestionText" class="text-lg md:text-xl font-bold text-slate-900 dark:text-slate-100 leading-snug">
+                  Loading question...
+                </h2>
+              </div>
+
+              <!-- 4 MCQ Option Blocks -->
+              <div id="fcOptionsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
+                <!-- Dynamically generated options (A, B, C, D) -->
+              </div>
+            </div>
+
+            <!-- Card Bottom Hint / Status -->
+            <div id="fcFeedbackBar" class="flex items-center justify-between text-xs pt-3 border-t border-slate-100 dark:border-slate-800/80">
+              <span class="text-slate-400 dark:text-slate-500">
+                Tip: Press keys <kbd class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[10px]">1</kbd>-<kbd class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[10px]">4</kbd> or say <span class="text-indigo-500 font-semibold">"Option A"</span>
+              </span>
+              <span id="fcStatusHint" class="font-semibold text-slate-600 dark:text-slate-300">
+                Select an option
+              </span>
+            </div>
+          </div>
+
+          <!-- CARD BACK (DETAILED EXPLANATION & CHAPTER NOTES) -->
+          <div class="card-face absolute inset-0 w-full h-full backface-hidden rotate-y-180 rounded-3xl p-6 md:p-8 bg-gradient-to-br from-indigo-900/90 to-slate-950 text-white border border-indigo-500/30 shadow-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="text-xs font-bold px-3 py-1 rounded-full bg-indigo-500/30 text-indigo-300 border border-indigo-400/30">
+                  Detailed Explanation & Context
+                </span>
+                <button id="fcFlipBackBtn" class="flex items-center gap-1.5 text-xs font-semibold text-indigo-200 hover:text-white px-2.5 py-1 rounded-lg bg-white/10 hover:bg-white/20 transition">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span>Back to Question</span>
+                </button>
+              </div>
+
+              <div class="space-y-3">
+                <h3 class="text-sm font-bold uppercase tracking-wider text-indigo-400">Correct Answer:</h3>
+                <div id="fcBackCorrectText" class="text-lg font-extrabold text-emerald-400 bg-emerald-950/40 border border-emerald-500/40 p-3 rounded-xl">
+                  Option Text
+                </div>
+                
+                <h3 class="text-sm font-bold uppercase tracking-wider text-indigo-400 pt-2">Textbook / Grammar Reference:</h3>
+                <p id="fcBackExplanation" class="text-sm text-slate-200 leading-relaxed bg-white/5 p-4 rounded-xl border border-white/10">
+                  Explanation will appear here.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-4 flex items-center justify-end gap-3 border-t border-white/10">
+              <button id="fcNextCardBtn" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg transition flex items-center gap-2">
+                <span>Next Question</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DRAG AND DROP FILL-IN-THE-BLANK CONTAINER -->
+      <div id="dragDropContainer" class="w-full max-w-2xl hidden">
+        <div class="w-full min-h-[420px] rounded-3xl p-6 md:p-8 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-xl flex flex-col justify-between">
+          
+          <div>
+            <!-- Header Badges -->
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="flex items-center gap-2">
+                <span id="dndTopicBadge" class="text-xs font-bold px-3 py-1 rounded-full bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800">
+                  Lesson 10
+                </span>
+                <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-300 dark:border-amber-800">
+                  🎯 Drag & Drop Fill-in-Blank
+                </span>
+              </div>
+
+              <!-- Speak Button -->
+              <button id="dndSpeakBtn" class="p-2 rounded-xl text-slate-500 hover:text-purple-600 dark:text-slate-400 dark:hover:text-purple-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="Read Question Aloud">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
+              </button>
+            </div>
+
+            <!-- Question Instruction & Sentence With Drop Zone -->
+            <div class="mb-6">
+              <span id="dndQuestionNumber" class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest block mb-2">
+                Drag-and-Drop 1 of 50
+              </span>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-3 italic">
+                Drag the correct word block into the dotted blank slot, or simply click any block:
+              </p>
+
+              <!-- Interactive Sentence with Drop Area -->
+              <div id="dndSentenceContainer" class="text-lg md:text-xl font-medium text-slate-800 dark:text-slate-100 leading-loose bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-700/80 flex flex-wrap items-center gap-2">
+                <!-- Text before blank -->
+                <span id="dndTextBefore">Harold Dahl lost an</span>
+                
+                <!-- DROP ZONE TARGET -->
+                <div id="dropZone" class="inline-flex items-center justify-center min-w-[150px] min-h-[46px] px-4 py-1.5 rounded-xl border-2 border-dashed border-sky-400 dark:border-sky-500 bg-sky-50/50 dark:bg-sky-950/30 text-sky-600 dark:text-sky-300 font-bold transition-all text-base duration-200">
+                  <span id="dropZonePlaceholder" class="text-xs font-semibold tracking-wider uppercase opacity-75">
+                    ⬇ Drop Block Here
+                  </span>
+                </div>
+
+                <!-- Text after blank -->
+                <span id="dndTextAfter">when he was fourteen.</span>
+              </div>
+            </div>
+
+            <!-- 4 DRAGGABLE WORD BLOCKS -->
+            <div class="mt-6">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-3">
+                Word Blocks (Drag or Click):
+              </span>
+              <div id="dndWordBlocks" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <!-- Dynamically generated word blocks -->
+              </div>
+            </div>
+
+            <!-- Explanation / Result Box for DnD -->
+            <div id="dndResultBox" class="mt-4 p-4 rounded-xl hidden transition-all">
+              <div class="flex items-start gap-2">
+                <div id="dndResultIcon" class="mt-0.5"></div>
+                <div>
+                  <h4 id="dndResultTitle" class="font-bold text-sm"></h4>
+                  <p id="dndResultExplanation" class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed"></p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Footer -->
+          <div class="flex items-center justify-between text-xs pt-4 border-t border-slate-100 dark:border-slate-800 mt-6">
+            <span class="text-slate-400 dark:text-slate-500">
+              HTML5 Native Drag-and-Drop + Click-to-Place
+            </span>
+            <button id="dndNextBtn" class="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs shadow-lg transition flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+              <span>Next Question</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- BOTTOM QUESTION NAVIGATION BAR -->
+    <section class="max-w-2xl mx-auto w-full flex items-center justify-between gap-4">
+      <button id="prevQuestionBtn" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 transition flex items-center gap-1.5 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+        <span>Previous (←)</span>
+      </button>
+
+      <!-- Jump / Question Navigator Dropdown -->
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Go to:</span>
+        <select id="questionJumpSelect" class="text-xs font-semibold px-3 py-1.5 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500">
+          <!-- Populated dynamically -->
+        </select>
+      </div>
+
+      <button id="nextQuestionBtn" class="px-4 py-2 rounded-xl bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 transition flex items-center gap-1.5 shadow-sm disabled:opacity-40 disabled:cursor-not-allowed">
+        <span>Next (→)</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </section>
+
+  </main>
+
+  <!-- SPEECH SETTINGS & API KEY MODAL -->
+  <div id="speechModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm hidden">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-3">
+        <div class="flex items-center gap-2">
+          <div class="p-2 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Voice Command & Speech Settings</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Web Speech API & Custom Speech Key</p>
+          </div>
+        </div>
+        <button id="closeSpeechModalBtn" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Info alert -->
+      <div class="p-3.5 rounded-2xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800/80 text-xs text-sky-800 dark:text-sky-300">
+        💡 <b>Browser Native Web Speech API:</b> Chrome, Edge, and Safari have full native voice recognition built-in without needing a paid key! You can speak anytime by clicking the microphone.
+      </div>
+
+      <!-- Optional API Key Input for Cloud Speech / Whisper -->
+      <div class="space-y-1.5">
+        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">
+          Custom Speech API Key (Optional)
+        </label>
+        <input type="password" id="speechApiKeyInput" placeholder="Enter your Speech / Whisper API Key (optional)" class="w-full text-xs px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono" />
+        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+          Stored safely in your browser's localStorage for custom integrations.
+        </p>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="space-y-1.5">
+        <label class="block text-xs font-bold text-slate-700 dark:text-slate-300">
+          Voice Recognition Language
+        </label>
+        <select id="speechLangSelect" class="w-full text-xs px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold">
+          <option value="en-IN" selected>English (India) - en-IN</option>
+          <option value="en-GB">English (UK) - en-GB</option>
+          <option value="en-US">English (US) - en-US</option>
+        </select>
+      </div>
+
+      <!-- Voice Commands Cheatsheet -->
+      <div class="p-3 rounded-2xl bg-slate-100 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 space-y-1.5">
+        <span class="text-xs font-bold text-slate-700 dark:text-slate-300 block">
+          Available Voice Commands:
+        </span>
+        <div class="grid grid-cols-2 gap-1 text-[11px] text-slate-600 dark:text-slate-400">
+          <div>• <b>"Option A / B / C / D"</b>: Select</div>
+          <div>• <b>"Next / Back"</b>: Navigate</div>
+          <div>• <b>"Flip"</b>: Flip Flashcard</div>
+          <div>• <b>"Read / Speak"</b>: Read aloud</div>
+          <div>• <b>"Dark / Light / Theme"</b>: Switch theme</div>
+          <div>• <b>"Mute / Sound"</b>: Toggle SFX</div>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2 pt-2">
+        <button id="saveSpeechSettingsBtn" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs shadow-lg transition">
+          Save Settings
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION & QUIZ RESULTS MODAL -->
+  <div id="resultsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm hidden">
+    <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 md:p-8 shadow-2xl text-center space-y-5">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-amber-400 to-emerald-500 flex items-center justify-center text-white text-3xl shadow-lg shadow-amber-500/20">
+        🏆
+      </div>
+      <div>
+        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Session Complete!</h3>
+        <p id="resultsSubtitle" class="text-xs text-slate-500 dark:text-slate-400 mt-1">
+          Great job practicing WBBSE Class 8 English!
+        </p>
+      </div>
+
+      <div class="grid grid-cols-3 gap-3">
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Score</span>
+          <span id="resScore" class="text-xl font-black text-sky-600 dark:text-sky-400">0</span>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Accuracy</span>
+          <span id="resAccuracy" class="text-xl font-black text-emerald-600 dark:text-emerald-400">0%</span>
+        </div>
+        <div class="p-3 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700">
+          <span class="text-[10px] uppercase font-bold text-slate-400 block">Best Streak</span>
+          <span id="resStreak" class="text-xl font-black text-amber-500">0</span>
+        </div>
+      </div>
+
+      <div class="flex justify-center gap-3 pt-2">
+        <button id="restartQuizBtn" class="px-5 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-bold text-xs shadow-md transition">
+          Practice Again
+        </button>
+        <button id="closeResultsBtn" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs border border-slate-200 dark:border-slate-700 transition">
+          Review Cards
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT APPLICATION CODE -->
+  <script>
+    /* ==========================================================================
+       1. EXTENSIVE WBBSE CLASS 8 QUESTION BANK (104 QUESTIONS)
+       Lessons 10-13 & Full Core Grammar Modules
+       ========================================================================== */
+    const QUESTION_BANK = [
+      // -------------------------------------------------------------
+      // LESSON 10: TALES OF CHILDHOOD (Roald Dahl) - 15 Questions
+      // -------------------------------------------------------------
+      {
+        id: "l10_1",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "mcq",
+        question: "Where did the author's grandfather own a store and trade in cheese and chicken-wire?",
+        options: [
+          "Cardiff, Wales",
+          "Sarpsborg, Norway",
+          "Llandaff, Wales",
+          "Radyr, Glamorgan"
+        ],
+        answer: 1, // Sarpsborg, Norway
+        explanation: "Roald Dahl's grandfather was a prosperous merchant who lived and operated his store in Sarpsborg, Norway, dealing in everything from cheese to chicken-wire."
+      },
+      {
+        id: "l10_2",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "dnd",
+        sentenceBefore: "Harold Dahl lost an",
+        blankWord: "arm",
+        sentenceAfter: "when he was fourteen years old.",
+        options: ["arm", "eye", "leg", "ear"],
+        explanation: "At the age of fourteen, Harold Dahl broke his arm from a fall from a roof. Due to a careless doctor, his arm had to be amputated."
+      },
+      {
+        id: "l10_3",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "mcq",
+        question: "According to the text, what is the primary business of a shipbroker?",
+        options: [
+          "Building wooden and iron ships for international trade",
+          "Supplying ships with everything they need when arriving at port (food, fuel, ropes)",
+          "Navigating commercial cargo vessels through rough waters",
+          "Selling passenger travel tickets for cross-Atlantic journeys"
+        ],
+        answer: 1,
+        explanation: "A shipbroker is someone who supplies the ship with everything it needs when it puts into port—fuel, food, ropes, paint, and other provisions."
+      },
+      {
+        id: "l10_4",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "dnd",
+        sentenceBefore: "In 1911, Harold Dahl married",
+        blankWord: "Sofie",
+        sentenceAfter: "Magdalene Hesselberg.",
+        options: ["Sofie", "Marie", "Astri", "Ellen"],
+        explanation: "Harold Dahl married Sofie Magdalene Hesselberg in 1911, and they went on to have children together."
+      },
+      {
+        id: "l10_5",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "mcq",
+        question: "In what year did Harold Dahl move his family into the imposing country mansion in Radyr?",
+        options: [
+          "1911",
+          "1914",
+          "1918",
+          "1920"
+        ],
+        answer: 2, // 1918
+        explanation: "In 1918, Harold Dahl moved his family to a grand country mansion beside the village of Radyr, about six miles north of Cardiff."
+      },
+      {
+        id: "l10_6",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "dnd",
+        sentenceBefore: "The country mansion at Radyr had many acres of farm and woodland, and several",
+        blankWord: "cottages",
+        sentenceAfter: "for staff.",
+        options: ["cottages", "tents", "factories", "stables"],
+        explanation: "The grand mansion in Radyr had extensive grounds, farmland, woods, and several cottages built for the domestic staff."
+      },
+      {
+        id: "l10_7",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "mcq",
+        question: "How old was Roald Dahl's elder sister Astri when she tragically died?",
+        options: [
+          "Three years old",
+          "Seven years old",
+          "Twelve years old",
+          "Fourteen years old"
+        ],
+        answer: 1, // Seven
+        explanation: "Astri was seven years old when she died of appendicitis in 1920, when Roald Dahl was only three years old."
+      },
+      {
+        id: "l10_8",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "dnd",
+        sentenceBefore: "Astri, Harold Dahl's favorite child, died from",
+        blankWord: "appendicitis",
+        sentenceAfter: "in the year 1920.",
+        options: ["appendicitis", "pneumonia", "malaria", "cholera"],
+        explanation: "Astri died of appendicitis in 1920. In those days, modern antibiotics were not widely available."
+      },
+      {
+        id: "l10_9",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "mcq",
+        question: "What illness caused the death of Harold Dahl a month after his favorite child Astri passed away?",
+        options: [
+          "Appendicitis",
+          "Tuberculosis",
+          "Pneumonia",
+          "Severe Typhoid"
+        ],
+        answer: 2, // Pneumonia
+        explanation: "Overwhelmed with grief after losing his beloved daughter Astri, Harold Dahl succumbed to pneumonia a month later as he lacked the will to fight the disease."
+      },
+      {
+        id: "l10_10",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "dnd",
+        sentenceBefore: "After her husband's death, the mother sold the mansion and moved to a smaller home in",
+        blankWord: "Llandaff",
+        sentenceAfter: "near Cardiff.",
+        options: ["Llandaff", "London", "Sarpsborg", "Edinburgh"],
+        explanation: "Mrs. Dahl decided to move to a smaller, manageable house in Llandaff so that her children could receive good English schooling."
+      },
+      {
+        id: "l10_11",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "mcq",
+        question: "How old was Roald Dahl when his sister Astri and his father passed away in 1920?",
+        options: [
+          "Seven years old",
+          "Three years old",
+          "Ten years old",
+          "Five years old"
+        ],
+        answer: 1, // 3
+        explanation: "Roald Dahl states in 'Boy: Tales of Childhood': 'In 1920, when I was still three, my mother's eldest child, my own sister Astri, died...'"
+      },
+      {
+        id: "l10_12",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "dnd",
+        sentenceBefore: "The narrator's grandfather traded in items ranging from cheese to",
+        blankWord: "chicken-wire",
+        sentenceAfter: "in Sarpsborg.",
+        options: ["chicken-wire", "cotton-yarn", "woolen-cloth", "iron-nails"],
+        explanation: "Dahl remarks that his grandfather's general store in Sarpsborg traded in everything from cheese to chicken-wire."
+      },
+      {
+        id: "l10_13",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "mcq",
+        question: "Which iconic candy from the sweet shop was famous for changing colors and never shrinking?",
+        options: [
+          "Pear Drops",
+          "Gobstoppers",
+          "Licorice Bootlaces",
+          "Glitter Drops"
+        ],
+        answer: 1, // Gobstoppers
+        explanation: "Gobstoppers were sold at a penny each and were prized by schoolchildren because they lasted for days and turned distinct colors as you sucked them."
+      },
+      {
+        id: "l10_14",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "dnd",
+        sentenceBefore: "The filthy, ill-tempered sweet-shop owner was an old woman named Mrs.",
+        blankWord: "Pratchett",
+        sentenceAfter: "in Llandaff.",
+        options: ["Pratchett", "Dahl", "Hesselberg", "Mortimer"],
+        explanation: "Mrs. Pratchett was the owner of the local sweet shop in Llandaff, notorious among the schoolboys for her dirty hands and bad temper."
+      },
+      {
+        id: "l10_15",
+        category: "l10",
+        topic: "Lesson 10: Tales of Childhood",
+        type: "mcq",
+        question: "In the famous 'Great Mouse Plot', what did young Roald Dahl drop into Mrs. Pratchett's sweet jar?",
+        options: [
+          "A dead frog",
+          "A dead mouse",
+          "A handful of gravel",
+          "A beetle"
+        ],
+        answer: 1, // A dead mouse
+        explanation: "In 'The Great Mouse Plot', Dahl and his school friends found a dead mouse under a loose floorboard and slipped it into Mrs. Pratchett's jar of Gobstoppers."
+      },
+
+      // -------------------------------------------------------------
+      // LESSON 11: MIDNIGHT EXPRESS (Alfred Noyes) - 14 Questions
+      // -------------------------------------------------------------
+      {
+        id: "l11_1",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "mcq",
+        question: "At what age did Mortimer first discover the battered, mysterious book?",
+        options: [
+          "Eight years old",
+          "Ten years old",
+          "Twelve years old",
+          "Sixteen years old"
+        ],
+        answer: 2, // 12
+        explanation: "Mortimer was twelve years old when he stumbled upon the battered old book in his father's library."
+      },
+      {
+        id: "l11_2",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "dnd",
+        sentenceBefore: "Mortimer found the battered book bound in red leather in his father's",
+        blankWord: "library",
+        sentenceAfter: "on a dusty shelf.",
+        options: ["library", "attic", "basement", "bedroom"],
+        explanation: "Mortimer discovered the red leather-bound book while browsing through his father's extensive library."
+      },
+      {
+        id: "l11_3",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "mcq",
+        question: "By what lighting source did young Mortimer read the frightening story in his bedroom?",
+        options: [
+          "Electric desk lamp",
+          "Gaslight lantern",
+          "Candlelight",
+          "Fireplace embers"
+        ],
+        answer: 2, // Candlelight
+        explanation: "Mortimer took the book up to his bedroom and read it by the soft, flickering light of a candle."
+      },
+      {
+        id: "l11_4",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "dnd",
+        sentenceBefore: "Mortimer never read beyond page",
+        blankWord: "fifty",
+        sentenceAfter: "because of the chilling illustration.",
+        options: ["fifty", "forty", "sixty", "thirty"],
+        explanation: "On page fifty, there was an illustration that filled Mortimer with dread, preventing him from ever turning to page fifty-one."
+      },
+      {
+        id: "l11_5",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "mcq",
+        question: "What did the terrifying illustration on page fifty depict?",
+        options: [
+          "A ghost roaming through a desolate graveyard in the dark",
+          "A solitary man standing under a dull yellow lamp on an empty railway platform",
+          "A steam train crashing into a deep river canyon",
+          "A mysterious clock striking midnight in an abandoned house"
+        ],
+        answer: 1,
+        explanation: "The picture showed an empty railway platform at night with a single man standing beneath a dull yellow lamp, facing a tunnel."
+      },
+      {
+        id: "l11_6",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "dnd",
+        sentenceBefore: "The solitary figure on the platform had his face turned towards the black mouth of a",
+        blankWord: "tunnel",
+        sentenceAfter: "in the illustration.",
+        options: ["tunnel", "cave", "dungeon", "bridge"],
+        explanation: "In the drawing, the man's back was partly turned and his face was looking towards the dark, gaping entrance of a railway tunnel."
+      },
+      {
+        id: "l11_7",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "mcq",
+        question: "Years later, as a grown young man, where did Mortimer find himself stranded at midnight?",
+        options: [
+          "At a busy central bus depot in London",
+          "At a dark, deserted junction platform in the countryside",
+          "Inside an ancient lighthouse during a sea storm",
+          "In a crowded ferry waiting room"
+        ],
+        answer: 1, // At a dark, deserted junction
+        explanation: "Years later, Mortimer was waiting for a connecting train at a remote, dimly lit railway junction late at night."
+      },
+      {
+        id: "l11_8",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "dnd",
+        sentenceBefore: "Years later, Mortimer found himself waiting at a dark, deserted railway",
+        blankWord: "junction",
+        sentenceAfter: "at midnight.",
+        options: ["junction", "harbour", "airport", "hall"],
+        explanation: "Mortimer was at a solitary railway junction surrounded by dense fog and silence."
+      },
+      {
+        id: "l11_9",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "mcq",
+        question: "When Mortimer walked up to the solitary figure on the platform, what terrifying discovery did he make?",
+        options: [
+          "The man had vanished into thin air like mist",
+          "The man had no facial features at all",
+          "He was staring directly into his own face",
+          "It was the spirit of his long-lost grandfather"
+        ],
+        answer: 2, // staring into his own face
+        explanation: "When Mortimer approached the solitary figure and looked into his face, he gasped in absolute terror as he realized he was looking directly into his own face."
+      },
+      {
+        id: "l11_10",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "dnd",
+        sentenceBefore: "Under the dull yellow lamp on the dark platform, Mortimer saw a",
+        blankWord: "solitary",
+        sentenceAfter: "figure standing motionless.",
+        options: ["solitary", "cheerful", "sleeping", "wounded"],
+        explanation: "A single, solitary figure stood motionless under the lamp, perfectly matching the book illustration from his childhood."
+      },
+      {
+        id: "l11_11",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "mcq",
+        question: "Who is the author of the eerie story 'Midnight Express'?",
+        options: [
+          "Alfred Noyes",
+          "Walter de la Mare",
+          "Jean Giono",
+          "Sugata Bose"
+        ],
+        answer: 0, // Alfred Noyes
+        explanation: "'Midnight Express' was written by Alfred Noyes, an English poet and short-story writer famed for works like 'The Highwayman'."
+      },
+      {
+        id: "l11_12",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "dnd",
+        sentenceBefore: "The mysterious battered book discovered by Mortimer was bound in",
+        blankWord: "red",
+        sentenceAfter: "leather.",
+        options: ["red", "black", "brown", "blue"],
+        explanation: "The story mentions that the old, battered volume was bound in distinct red leather."
+      },
+      {
+        id: "l11_13",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "mcq",
+        question: "Which literary mood or atmosphere dominates Alfred Noyes's 'Midnight Express'?",
+        options: [
+          "Satirical and humorous",
+          "Eerie, supernatural suspense and psychological dread",
+          "Historical biography",
+          "Romantic optimism"
+        ],
+        answer: 1,
+        explanation: "The narrative evokes suspense, psychological dread, and the eerie unreality of a recurring premonition."
+      },
+      {
+        id: "l11_14",
+        category: "l11",
+        topic: "Lesson 11: Midnight Express",
+        type: "dnd",
+        sentenceBefore: "The atmosphere of the railway station was shrouded in deep mist and absolute",
+        blankWord: "silence",
+        sentenceAfter: "before the train arrived.",
+        options: ["silence", "music", "laughter", "chaos"],
+        explanation: "The silence of the lonely railway station heightened Mortimer's suspense and terror."
+      },
+
+      // -------------------------------------------------------------
+      // LESSON 12: SOMEONE (Walter de la Mare) - 12 Questions
+      // -------------------------------------------------------------
+      {
+        id: "l12_1",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "mcq",
+        question: "How does the poet describe his door in the opening lines of 'Someone'?",
+        options: [
+          "A massive oak door",
+          "A wee, small door",
+          "A creaking rusty gate",
+          "A wide garden door"
+        ],
+        answer: 1, // wee, small door
+        explanation: "The opening lines are: 'Someone came knocking / At my wee, small door;'."
+      },
+      {
+        id: "l12_2",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "dnd",
+        sentenceBefore: "'Someone came knocking, I'm",
+        blankWord: "sure",
+        sentenceAfter: "-sure-sure.'",
+        options: ["sure", "felt", "glad", "here"],
+        explanation: "The poet repeats 'I'm sure-sure-sure' to emphasize the certainty of the knocking despite seeing nobody outside."
+      },
+      {
+        id: "l12_3",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "mcq",
+        question: "When the poet opened the door, what did he do to inspect who was there?",
+        options: [
+          "He called out loudly into the dark woods",
+          "He listened, opened, and looked to left and right",
+          "He shone a lantern high in the trees",
+          "He immediately ran outside searching"
+        ],
+        answer: 1,
+        explanation: "The poem says: 'I listened, I opened, / I looked to left and right,'."
+      },
+      {
+        id: "l12_4",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "dnd",
+        sentenceBefore: "'But nought there was a-",
+        blankWord: "stirring",
+        sentenceAfter: "in the still dark night.'",
+        options: ["stirring", "shining", "creeping", "falling"],
+        explanation: "'Nought there was a-stirring' indicates that complete calm and stillness reigned outside."
+      },
+      {
+        id: "l12_5",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "mcq",
+        question: "In the poem 'Someone', where was the busy beetle tap-tapping?",
+        options: [
+          "In the wooden floor",
+          "In the wall",
+          "On the roof tiles",
+          "On the window sill"
+        ],
+        answer: 1, // in the wall
+        explanation: "The poem explicitly states: 'Only the busy beetle / Tap-tapping in the wall,'."
+      },
+      {
+        id: "l12_6",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "dnd",
+        sentenceBefore: "From the forest, the poet heard the screech-",
+        blankWord: "owl",
+        sentenceAfter: "'s call.",
+        options: ["owl", "crow", "hawk", "dove"],
+        explanation: "The poet hears 'the screech-owl's call' resonating from the forest."
+      },
+      {
+        id: "l12_7",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "mcq",
+        question: "What was the cricket doing while the dewdrops were falling in the night?",
+        options: [
+          "Chirping loudly",
+          "Whistling",
+          "Sleeping under grass",
+          "Flying through branches"
+        ],
+        answer: 1, // Whistling
+        explanation: "Walter de la Mare writes: 'Only the cricket whistling / While the dewdrops fall,'."
+      },
+      {
+        id: "l12_8",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "dnd",
+        sentenceBefore: "The archaic word 'nought' used in the poem means",
+        blankWord: "nothing",
+        sentenceAfter: "in modern English.",
+        options: ["nothing", "everything", "someone", "shadow"],
+        explanation: "'Nought' is an archaic poetic term signifying 'nothing' or 'not anything'."
+      },
+      {
+        id: "l12_9",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "mcq",
+        question: "How does the poet conclude the poem 'Someone'?",
+        options: [
+          "He finally saw a cloaked stranger walking away",
+          "He realized it was only a gust of mountain wind",
+          "He confessed he knows not who came knocking, at all, at all, at all",
+          "He locked the door and fell fast asleep"
+        ],
+        answer: 2,
+        explanation: "The poem ends on an unresolved note of mystery: 'So I know not who came knocking, / At all, at all, at all.'"
+      },
+      {
+        id: "l12_10",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "dnd",
+        sentenceBefore: "The poem 'Someone' was composed by the celebrated poet Walter de la",
+        blankWord: "Mare",
+        sentenceAfter: "known for his imaginative verses.",
+        options: ["Mare", "Noyes", "Dahl", "Wordsworth"],
+        explanation: "Walter de la Mare (1873–1956) was an eminent British poet noted for his poems for children and themes of mystery."
+      },
+      {
+        id: "l12_11",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "mcq",
+        question: "Which nocturnal sounds does the speaker hear in the poem?",
+        options: [
+          "Roaring thunder and pouring rain",
+          "Beetle tap-tapping, screech-owl calling, and cricket whistling",
+          "Barking dogs and marching soldiers",
+          "A church bell ringing midnight"
+        ],
+        answer: 1,
+        explanation: "In the stillness of the night, only the beetle in the wall, the owl in the forest, and the cricket are heard."
+      },
+      {
+        id: "l12_12",
+        category: "l12",
+        topic: "Lesson 12: Someone",
+        type: "dnd",
+        sentenceBefore: "The beetle mentioned in the poem is described with the adjective",
+        blankWord: "busy",
+        sentenceAfter: "tap-tapping in the wall.",
+        options: ["busy", "lazy", "dark", "silent"],
+        explanation: "The text describes: 'Only the busy beetle / Tap-tapping in the wall'."
+      },
+
+      // -------------------------------------------------------------
+      // LESSON 13: THE MAN WHO PLANTED TREES (Jean Giono) - 14 Questions
+      // -------------------------------------------------------------
+      {
+        id: "l13_1",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "mcq",
+        question: "About how many years ago did the narrator undertake the journey described in the text?",
+        options: [
+          "About ten years ago",
+          "About twenty years ago",
+          "About forty years ago",
+          "About sixty years ago"
+        ],
+        answer: 2, // forty years ago
+        explanation: "The narrator begins by stating that he was speaking of his experience about forty years ago (before the First World War)."
+      },
+      {
+        id: "l13_2",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "dnd",
+        sentenceBefore: "The narrator was hiking through an ancient region of the Alps that reaches into",
+        blankWord: "Provence",
+        sentenceAfter: "in south-eastern France.",
+        options: ["Provence", "Normandy", "Bordeaux", "Brittany"],
+        explanation: "The region lies in Provence, where the foothills of the southern French Alps meet barren highlands."
+      },
+      {
+        id: "l13_3",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "mcq",
+        question: "In the desolate highlands, what was the only vegetation that could grow naturally?",
+        options: [
+          "Tall cactus plants",
+          "Wild lavender",
+          "Scattered wheat",
+          "Thorny rosebushes"
+        ],
+        answer: 1, // Wild lavender
+        explanation: "Nothing grew on those arid, wind-swept slopes except patches of wild lavender."
+      },
+      {
+        id: "l13_4",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "dnd",
+        sentenceBefore: "The sound of the fierce wind howling through the abandoned village was like a",
+        blankWord: "wild",
+        sentenceAfter: "beast snarling during meals.",
+        options: ["wild", "tame", "gentle", "dying"],
+        explanation: "The narrator describes the wind whistling through the ruins with the unceasing ferocity of a wild beast."
+      },
+      {
+        id: "l13_5",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "mcq",
+        question: "What was the name of the solitary shepherd who planted the trees?",
+        options: [
+          "Jean Giono",
+          "Harold Bouffier",
+          "Elzéard Bouffier",
+          "Marcel Pagnol"
+        ],
+        answer: 2, // Elzéard Bouffier
+        explanation: "The shepherd's name was Elzéard Bouffier, an extraordinarily humble and dedicated man."
+      },
+      {
+        id: "l13_6",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "dnd",
+        sentenceBefore: "When the narrator first met him, Elzéard Bouffier was a shepherd of",
+        blankWord: "fifty",
+        sentenceAfter: "-five years of age.",
+        options: ["fifty", "forty", "sixty", "seventy"],
+        explanation: "Elzéard Bouffier was fifty-five years old when the narrator met him in 1913."
+      },
+      {
+        id: "l13_7",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "mcq",
+        question: "How many sheep did Elzéard Bouffier keep along with his dog in his stone house?",
+        options: [
+          "Ten sheep",
+          "Thirty sheep",
+          "One hundred sheep",
+          "Fifty sheep"
+        ],
+        answer: 1, // Thirty
+        explanation: "He lived quietly in a well-built stone cottage with his faithful dog and a small flock of thirty sheep."
+      },
+      {
+        id: "l13_8",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "dnd",
+        sentenceBefore: "Every evening with great concentration, Elzéard Bouffier inspected and selected one hundred perfect",
+        blankWord: "acorns",
+        sentenceAfter: "for planting.",
+        options: ["acorns", "seeds", "pebbles", "walnuts"],
+        explanation: "He carefully selected one hundred sound, unblemished acorns every night to plant the following morning."
+      },
+      {
+        id: "l13_9",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "mcq",
+        question: "What tool did Elzéard Bouffier use to make holes in the soil and drop his acorns?",
+        options: [
+          "A wooden trowel",
+          "An iron rod",
+          "A sharp spade",
+          "A bronze pickaxe"
+        ],
+        answer: 1, // An iron rod
+        explanation: "He carried an iron rod as thick as his thumb and about a yard and a half long to drive holes into the ground."
+      },
+      {
+        id: "l13_10",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "dnd",
+        sentenceBefore: "Bouffier realized that the desolate region was dying simply for lack of",
+        blankWord: "trees",
+        sentenceAfter: "in the landscape.",
+        options: ["trees", "roads", "fences", "gold"],
+        explanation: "Bouffier deduced that the barrenness and despair of the people stemmed from the complete destruction of trees."
+      },
+      {
+        id: "l13_11",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "mcq",
+        question: "Why was Elzéard Bouffier living a life of solitude in the high hills?",
+        options: [
+          "He was banished from his village by authorities",
+          "He had lost his only son and then his wife, and sought peaceful contemplation",
+          "He was seeking hidden treasures buried in the hills",
+          "He was carrying out official military service"
+        ],
+        answer: 1,
+        explanation: "Having lost his only son and wife, Bouffier chose quiet solitude with nature and dedicated his life to restoring life to the barren earth."
+      },
+      {
+        id: "l13_12",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "dnd",
+        sentenceBefore: "When the narrator returned years later, running",
+        blankWord: "brooks",
+        sentenceAfter: "flowed where ancient dry springs had been.",
+        options: ["brooks", "rivers", "wells", "canals"],
+        explanation: "The widespread forest created by Bouffier retained moisture, causing water to flow again in once-dry brooks."
+      },
+      {
+        id: "l13_13",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "mcq",
+        question: "What profound moral lesson does Jean Giono convey through 'The Man Who Planted Trees'?",
+        options: [
+          "Wealth and commerce are necessary for human happiness",
+          "One unselfish human being, working with patience, can achieve godlike creation",
+          "War is inevitable and cannot be overcome",
+          "Nature can never recover once harmed by humans"
+        ],
+        answer: 1,
+        explanation: "Giono highlights how a solitary individual, armed only with generosity and perseverance, can perform a miracle of rebirth comparable to God's creation."
+      },
+      {
+        id: "l13_14",
+        category: "l13",
+        topic: "Lesson 13: The Man Who Planted Trees",
+        type: "dnd",
+        sentenceBefore: "The narrator noticed that the shepherd exuded an impressive air of absolute",
+        blankWord: "peace",
+        sentenceAfter: "and quiet authority.",
+        options: ["peace", "anger", "fear", "haste"],
+        explanation: "Bouffier's calmness and inner serenity made a profound impression on the narrator."
+      },
+
+      // -------------------------------------------------------------
+      // GRAMMAR TOPIC 1: CLAUSE (7 Questions)
+      // -------------------------------------------------------------
+      {
+        id: "g_cl_1",
+        category: "grammar",
+        subCategory: "g_clause",
+        topic: "Grammar: Clauses",
+        type: "mcq",
+        question: "Identify the type of subordinate clause in: 'I know the place where Rabindranath Tagore was born.'",
+        options: [
+          "Noun Clause (Object of 'know')",
+          "Adjective Clause (Qualifying the noun 'place')",
+          "Adverbial Clause of Place",
+          "Coordinate Clause"
+        ],
+        answer: 1, // Adjective Clause
+        explanation: "'where Rabindranath Tagore was born' qualifies the preceding noun 'the place', making it an Adjective (or Relative) Clause."
+      },
+      {
+        id: "g_cl_2",
+        category: "grammar",
+        subCategory: "g_clause",
+        topic: "Grammar: Clauses",
+        type: "dnd",
+        sentenceBefore: "This is the courageous student",
+        blankWord: "who",
+        sentenceAfter: "rescued the injured kitten from the tree.",
+        options: ["who", "which", "whom", "where"],
+        explanation: "'Who rescued the injured kitten' is an Adjective Clause introduced by the relative pronoun 'who' referring to the student."
+      },
+      {
+        id: "g_cl_3",
+        category: "grammar",
+        subCategory: "g_clause",
+        topic: "Grammar: Clauses",
+        type: "mcq",
+        question: "In the sentence: 'That he is honest is known to all', what function does the clause 'That he is honest' serve?",
+        options: [
+          "Noun Clause acting as the Subject of the verb 'is known'",
+          "Adverbial Clause of Reason",
+          "Adjective Clause modifying 'all'",
+          "Object of the preposition 'to'"
+        ],
+        answer: 0,
+        explanation: "'That he is honest' is a Noun Clause functioning as the grammatical subject of the verb phrase 'is known'."
+      },
+      {
+        id: "g_cl_4",
+        category: "grammar",
+        subCategory: "g_clause",
+        topic: "Grammar: Clauses",
+        type: "dnd",
+        sentenceBefore: "We shall stay indoors if it",
+        blankWord: "rains",
+        sentenceAfter: "heavily this evening.",
+        options: ["rains", "rained", "raining", "will rain"],
+        explanation: "In an Adverbial Clause of Condition referring to future time ('if it rains'), simple present tense is used."
+      },
+      {
+        id: "g_cl_5",
+        category: "grammar",
+        subCategory: "g_clause",
+        topic: "Grammar: Clauses",
+        type: "mcq",
+        question: "Identify the Principal (Independent) Clause in: 'Although he worked tirelessly, he could not succeed.'",
+        options: [
+          "Although he worked tirelessly",
+          "he could not succeed",
+          "worked tirelessly",
+          "could not succeed"
+        ],
+        answer: 1, // he could not succeed
+        explanation: "'He could not succeed' can stand on its own as a complete sentence and is therefore the Principal Clause."
+      },
+      {
+        id: "g_cl_6",
+        category: "grammar",
+        subCategory: "g_clause",
+        topic: "Grammar: Clauses",
+        type: "dnd",
+        sentenceBefore: "The news",
+        blankWord: "that",
+        sentenceAfter: "he won the scholarship brought great happiness.",
+        options: ["that", "which", "what", "where"],
+        explanation: "'That he won the scholarship' is a Noun Clause in apposition to the noun 'news'."
+      },
+      {
+        id: "g_cl_7",
+        category: "grammar",
+        subCategory: "g_clause",
+        topic: "Grammar: Clauses",
+        type: "mcq",
+        question: "'Wait here until the school bell rings.' The underlined clause 'until the school bell rings' is an:",
+        options: [
+          "Adverbial Clause of Time",
+          "Adverbial Clause of Condition",
+          "Noun Clause",
+          "Adjective Clause"
+        ],
+        answer: 0,
+        explanation: "'Until the school bell rings' indicates the time limit up to which the action 'wait' must continue, making it an Adverbial Clause of Time."
+      },
+
+      // -------------------------------------------------------------
+      // GRAMMAR TOPIC 2: MODALS (7 Questions)
+      // -------------------------------------------------------------
+      {
+        id: "g_md_1",
+        category: "grammar",
+        subCategory: "g_modals",
+        topic: "Grammar: Modals",
+        type: "mcq",
+        question: "Which modal verb appropriately expresses moral duty or social obligation in: 'We ______ respect our national flag.'?",
+        options: [
+          "ought to",
+          "might",
+          "could",
+          "may"
+        ],
+        answer: 0, // ought to
+        explanation: "'Ought to' expresses moral duty, obligation, and righteousness."
+      },
+      {
+        id: "g_md_2",
+        category: "grammar",
+        subCategory: "g_modals",
+        topic: "Grammar: Modals",
+        type: "dnd",
+        sentenceBefore: "",
+        blankWord: "May",
+        sentenceAfter: "I come into the classroom, sir?",
+        options: ["May", "Might", "Will", "Would"],
+        explanation: "'May' is the standard polite modal used for seeking formal permission from a teacher or elder."
+      },
+      {
+        id: "g_md_3",
+        category: "grammar",
+        subCategory: "g_modals",
+        topic: "Grammar: Modals",
+        type: "mcq",
+        question: "'When my grandfather was young, he ______ swim across the turbulent river.' Which modal expresses past ability?",
+        options: [
+          "can",
+          "could",
+          "should",
+          "may"
+        ],
+        answer: 1, // could
+        explanation: "'Could' is used as the past tense equivalent of 'can' to describe general physical or mental ability in the past."
+      },
+      {
+        id: "g_md_4",
+        category: "grammar",
+        subCategory: "g_modals",
+        topic: "Grammar: Modals",
+        type: "dnd",
+        sentenceBefore: "The sky is dense with dark clouds; it",
+        blankWord: "may",
+        sentenceAfter: "rain this afternoon.",
+        options: ["may", "must", "shall", "ought"],
+        explanation: "'May' expresses strong factual possibility based on present evidence (dark clouds)."
+      },
+      {
+        id: "g_md_5",
+        category: "grammar",
+        subCategory: "g_modals",
+        topic: "Grammar: Modals",
+        type: "mcq",
+        question: "Choose the modal expressing absolute compulsion or strict necessity: 'Every student ______ attend the laboratory session.'",
+        options: [
+          "can",
+          "might",
+          "must",
+          "could"
+        ],
+        answer: 2, // must
+        explanation: "'Must' denotes strong obligation, necessity, or compulsory rule."
+      },
+      {
+        id: "g_md_6",
+        category: "grammar",
+        subCategory: "g_modals",
+        topic: "Grammar: Modals",
+        type: "dnd",
+        sentenceBefore: "You",
+        blankWord: "need",
+        sentenceAfter: "not worry about the books; they are safe.",
+        options: ["need", "dare", "shall", "must"],
+        explanation: "'Need not' indicates absence of necessity or obligation ('you don't have to worry')."
+      },
+      {
+        id: "g_md_7",
+        category: "grammar",
+        subCategory: "g_modals",
+        topic: "Grammar: Modals",
+        type: "mcq",
+        question: "'______ you please pass the grammar textbook?' Which modal creates a very polite and formal request?",
+        options: [
+          "Would",
+          "Shall",
+          "Must",
+          "Should"
+        ],
+        answer: 0, // Would
+        explanation: "'Would you please...' or 'Could you please...' expresses a courteous, polite request."
+      },
+
+      // -------------------------------------------------------------
+      // GRAMMAR TOPIC 3: INFINITIVES (7 Questions)
+      // -------------------------------------------------------------
+      {
+        id: "g_inf_1",
+        category: "grammar",
+        subCategory: "g_infinitives",
+        topic: "Grammar: Infinitives",
+        type: "mcq",
+        question: "Combine into a single sentence using an Infinitive: 'He is very weak. He cannot run fast.'",
+        options: [
+          "He is too weak to run fast.",
+          "He is so weak that he cannot run fast.",
+          "Being weak, he cannot run fast.",
+          "He runs slowly because he is weak."
+        ],
+        answer: 0,
+        explanation: "'He is too weak to run fast' combines two clauses into one simple sentence using the infinitive 'to run' after 'too weak'."
+      },
+      {
+        id: "g_inf_2",
+        category: "grammar",
+        subCategory: "g_infinitives",
+        topic: "Grammar: Infinitives",
+        type: "dnd",
+        sentenceBefore: "The strict teacher made the mischievous boys",
+        blankWord: "stand",
+        sentenceAfter: "outside the class.",
+        options: ["stand", "to stand", "standing", "stood"],
+        explanation: "Verbs like 'make', 'let', 'bid', 'hear', and 'watch' take a Bare Infinitive (infinitive without 'to') in active voice."
+      },
+      {
+        id: "g_inf_3",
+        category: "grammar",
+        subCategory: "g_infinitives",
+        topic: "Grammar: Infinitives",
+        type: "mcq",
+        question: "In the famous proverb 'To err is human; to forgive is divine', what grammatical role does 'To err' play?",
+        options: [
+          "Subject of the verb 'is'",
+          "Object of the verb 'is'",
+          "Adverb modifying human",
+          "Prepositional phrase"
+        ],
+        answer: 0,
+        explanation: "A simple infinitive can function as the noun subject of a sentence, as in 'To err is human'."
+      },
+      {
+        id: "g_inf_4",
+        category: "grammar",
+        subCategory: "g_infinitives",
+        topic: "Grammar: Infinitives",
+        type: "dnd",
+        sentenceBefore: "My elder brother went to the railway station",
+        blankWord: "to",
+        sentenceAfter: "receive our uncle.",
+        options: ["to", "for", "with", "in"],
+        explanation: "The qualifying infinitive 'to receive' expresses the purpose of going to the railway station."
+      },
+      {
+        id: "g_inf_5",
+        category: "grammar",
+        subCategory: "g_infinitives",
+        topic: "Grammar: Infinitives",
+        type: "mcq",
+        question: "Which of the following sentences contains a 'Bare Infinitive'?",
+        options: [
+          "Let him enter the hall now.",
+          "She decided to study English literature.",
+          "He walked fast to catch the bus.",
+          "To speak the truth requires courage."
+        ],
+        answer: 0,
+        explanation: "In 'Let him enter', the verb 'enter' is a bare infinitive (an infinitive used without the marker 'to')."
+      },
+      {
+        id: "g_inf_6",
+        category: "grammar",
+        subCategory: "g_infinitives",
+        topic: "Grammar: Infinitives",
+        type: "dnd",
+        sentenceBefore: "We watched the flock of wild geese",
+        blankWord: "fly",
+        sentenceAfter: "across the sunset sky.",
+        options: ["fly", "to fly", "flew", "flown"],
+        explanation: "After verbs of perception like 'watch', 'see', and 'hear', the bare infinitive 'fly' is used."
+      },
+      {
+        id: "g_inf_7",
+        category: "grammar",
+        subCategory: "g_infinitives",
+        topic: "Grammar: Infinitives",
+        type: "mcq",
+        question: "Combine using an Infinitive: 'Elzéard Bouffier carried an iron rod. He wanted to make holes in the soil.'",
+        options: [
+          "Elzéard Bouffier carried an iron rod to make holes in the soil.",
+          "Elzéard Bouffier carried an iron rod and made holes in the soil.",
+          "Because he wanted to make holes, he carried an iron rod.",
+          "Carrying an iron rod, he made holes in the soil."
+        ],
+        answer: 0,
+        explanation: "'to make holes' expresses the purpose directly using an infinitive, joining both ideas into a simple sentence."
+      },
+
+      // -------------------------------------------------------------
+      // GRAMMAR TOPIC 4: PREFIX AND SUFFIX (7 Questions)
+      // -------------------------------------------------------------
+      {
+        id: "g_aff_1",
+        category: "grammar",
+        subCategory: "g_affix",
+        topic: "Grammar: Prefix & Suffix",
+        type: "mcq",
+        question: "Which negative prefix forms the correct antonym of the word 'patient'?",
+        options: [
+          "un-",
+          "im-",
+          "dis-",
+          "in-"
+        ],
+        answer: 1, // im- (impatient)
+        explanation: "Words starting with 'p' or 'm' commonly take the prefix 'im-' to form negatives: patient -> impatient, possible -> impossible."
+      },
+      {
+        id: "g_aff_2",
+        category: "grammar",
+        subCategory: "g_affix",
+        topic: "Grammar: Prefix & Suffix",
+        type: "dnd",
+        sentenceBefore: "The old shepherd was renowned for his extraordinary gentle",
+        blankWord: "ness",
+        sentenceAfter: "and peaceful disposition.",
+        options: ["ness", "ment", "ful", "less"],
+        explanation: "Adding the noun-forming suffix '-ness' to the adjective 'gentle' creates the abstract noun 'gentleness'."
+      },
+      {
+        id: "g_aff_3",
+        category: "grammar",
+        subCategory: "g_affix",
+        topic: "Grammar: Prefix & Suffix",
+        type: "mcq",
+        question: "Which prefix added to the root word 'courage' converts it into a verb meaning 'to inspire with confidence'?",
+        options: [
+          "en-",
+          "dis-",
+          "un-",
+          "re-"
+        ],
+        answer: 0, // en- (encourage)
+        explanation: "The prefix 'en-' turns the noun 'courage' into the transitive verb 'encourage'."
+      },
+      {
+        id: "g_aff_4",
+        category: "grammar",
+        subCategory: "g_affix",
+        topic: "Grammar: Prefix & Suffix",
+        type: "dnd",
+        sentenceBefore: "The injured soldier made a wonder",
+        blankWord: "ful",
+        sentenceAfter: "recovery through medical care.",
+        options: ["ful", "less", "ment", "able"],
+        explanation: "Adding the adjective suffix '-ful' to 'wonder' produces 'wonderful'."
+      },
+      {
+        id: "g_aff_5",
+        category: "grammar",
+        subCategory: "g_affix",
+        topic: "Grammar: Prefix & Suffix",
+        type: "mcq",
+        question: "What does the suffix '-less' denote in words such as 'treeless', 'fearless', and 'hopeless'?",
+        options: [
+          "Full of or abundant in",
+          "Without, lacking, or free from",
+          "Able to be transformed",
+          "Pertaining to time"
+        ],
+        answer: 1,
+        explanation: "The suffix '-less' indicates absence or lack: 'treeless' = without trees, 'fearless' = without fear."
+      },
+      {
+        id: "g_aff_6",
+        category: "grammar",
+        subCategory: "g_affix",
+        topic: "Grammar: Prefix & Suffix",
+        type: "dnd",
+        sentenceBefore: "His explanation was completely un",
+        blankWord: "believable",
+        sentenceAfter: "and contradicted all factual evidence.",
+        options: ["believable", "believed", "belief", "believer"],
+        explanation: "The prefix 'un-' plus the adjective suffix '-able' attached to 'believe' forms 'unbelievable'."
+      },
+      {
+        id: "g_aff_7",
+        category: "grammar",
+        subCategory: "g_affix",
+        topic: "Grammar: Prefix & Suffix",
+        type: "mcq",
+        question: "What is the noun form of the verb 'examine' formed by affixation?",
+        options: [
+          "Examined",
+          "Examinable",
+          "Examination",
+          "Examiningly"
+        ],
+        answer: 2, // Examination
+        explanation: "Adding the Latinate suffix '-ation' to the verb 'examine' yields the abstract noun 'examination'."
+      },
+
+      // -------------------------------------------------------------
+      // GRAMMAR TOPIC 5: VOICE CHANGE (7 Questions)
+      // -------------------------------------------------------------
+      {
+        id: "g_vc_1",
+        category: "grammar",
+        subCategory: "g_voice",
+        topic: "Grammar: Voice Change",
+        type: "mcq",
+        question: "Change to Passive Voice: 'Roald Dahl wrote the autobiographical book.'",
+        options: [
+          "The autobiographical book was written by Roald Dahl.",
+          "The autobiographical book is written by Roald Dahl.",
+          "The autobiographical book had been written by Roald Dahl.",
+          "The autobiographical book was being written by Roald Dahl."
+        ],
+        answer: 0,
+        explanation: "Simple Past ('wrote') converts to 'was/were + past participle' ('was written') in passive voice."
+      },
+      {
+        id: "g_vc_2",
+        category: "grammar",
+        subCategory: "g_voice",
+        topic: "Grammar: Voice Change",
+        type: "dnd",
+        sentenceBefore: "Active: 'Shut the window.' -> Passive: 'Let the window",
+        blankWord: "be",
+        sentenceAfter: "shut.'",
+        options: ["be", "been", "being", "is"],
+        explanation: "Imperative sentences in passive voice take the structure: 'Let + Object + be + Past Participle'."
+      },
+      {
+        id: "g_vc_3",
+        category: "grammar",
+        subCategory: "g_voice",
+        topic: "Grammar: Voice Change",
+        type: "mcq",
+        question: "Change to Passive Voice: 'The gardener is planting ten thousand saplings.'",
+        options: [
+          "Ten thousand saplings are planted by the gardener.",
+          "Ten thousand saplings are being planted by the gardener.",
+          "Ten thousand saplings were planted by the gardener.",
+          "Ten thousand saplings have been planted by the gardener."
+        ],
+        answer: 1,
+        explanation: "Present Continuous ('is planting') becomes 'am/is/are + being + past participle' ('are being planted')."
+      },
+      {
+        id: "g_vc_4",
+        category: "grammar",
+        subCategory: "g_voice",
+        topic: "Grammar: Voice Change",
+        type: "dnd",
+        sentenceBefore: "Active: 'He has finished the task.' -> Passive: 'The task has",
+        blankWord: "been",
+        sentenceAfter: "finished by him.'",
+        options: ["been", "be", "being", "had"],
+        explanation: "Present Perfect ('has finished') converts to 'has/have + been + past participle' ('has been finished')."
+      },
+      {
+        id: "g_vc_5",
+        category: "grammar",
+        subCategory: "g_voice",
+        topic: "Grammar: Voice Change",
+        type: "mcq",
+        question: "Change to Passive Voice: 'Who wrote Midnight Express?'",
+        options: [
+          "By whom was Midnight Express written?",
+          "By who was Midnight Express written?",
+          "Who was written Midnight Express?",
+          "By whom Midnight Express was written?"
+        ],
+        answer: 0,
+        explanation: "Interrogative sentences starting with 'Who' change to 'By whom + auxiliary verb + subject + past participle?'"
+      },
+      {
+        id: "g_vc_6",
+        category: "grammar",
+        subCategory: "g_voice",
+        topic: "Grammar: Voice Change",
+        type: "dnd",
+        sentenceBefore: "Active: 'You must obey the rules.' -> Passive: 'The rules must",
+        blankWord: "be",
+        sentenceAfter: "obeyed by you.'",
+        options: ["be", "been", "being", "have"],
+        explanation: "Modal verbs in passive voice follow the formula: 'Modal + be + Past Participle' ('must be obeyed')."
+      },
+      {
+        id: "g_vc_7",
+        category: "grammar",
+        subCategory: "g_voice",
+        topic: "Grammar: Voice Change",
+        type: "mcq",
+        question: "Change to Active Voice: 'A letter was delivered to me by the postman.'",
+        options: [
+          "The postman delivered a letter to me.",
+          "The postman delivers a letter to me.",
+          "The postman had delivered a letter to me.",
+          "The postman is delivering a letter to me."
+        ],
+        answer: 0,
+        explanation: "Passive past ('was delivered by the postman') changes back to active simple past: 'The postman delivered...'"
+      },
+
+      // -------------------------------------------------------------
+      // GRAMMAR TOPIC 6: NARRATION CHANGE (7 Questions)
+      // -------------------------------------------------------------
+      {
+        id: "g_nc_1",
+        category: "grammar",
+        subCategory: "g_narration",
+        topic: "Grammar: Narration Change",
+        type: "mcq",
+        question: "Change into Indirect Speech: The teacher said, 'The earth revolves round the sun.'",
+        options: [
+          "The teacher said that the earth revolved round the sun.",
+          "The teacher said that the earth revolves round the sun.",
+          "The teacher said that the earth was revolving round the sun.",
+          "The teacher told that the earth has revolved round the sun."
+        ],
+        answer: 1,
+        explanation: "Universal truths, scientific facts, and habitual actions do not undergo tense shifts in indirect speech."
+      },
+      {
+        id: "g_nc_2",
+        category: "grammar",
+        subCategory: "g_narration",
+        topic: "Grammar: Narration Change",
+        type: "dnd",
+        sentenceBefore: "Direct: He said, 'I am reading a story.' -> Indirect: He said that he",
+        blankWord: "was",
+        sentenceAfter: "reading a story.",
+        options: ["was", "is", "were", "had been"],
+        explanation: "Present continuous ('am reading') shifts to past continuous ('was reading') when the reporting verb is in the past."
+      },
+      {
+        id: "g_nc_3",
+        category: "grammar",
+        subCategory: "g_narration",
+        topic: "Grammar: Narration Change",
+        type: "mcq",
+        question: "Change into Indirect Speech: Mortimer asked, 'Where is the midnight train going?'",
+        options: [
+          "Mortimer asked that where the midnight train was going.",
+          "Mortimer asked where the midnight train was going.",
+          "Mortimer asked where was the midnight train going.",
+          "Mortimer told where the midnight train went."
+        ],
+        answer: 1,
+        explanation: "In Wh-questions, the Wh-word serves as conjunction, and the interrogative word order changes to assertive order (Subject + Verb)."
+      },
+      {
+        id: "g_nc_4",
+        category: "grammar",
+        subCategory: "g_narration",
+        topic: "Grammar: Narration Change",
+        type: "dnd",
+        sentenceBefore: "Direct: The doctor said to the patient, 'Take regular rest.' -> Indirect: The doctor",
+        blankWord: "advised",
+        sentenceAfter: "the patient to take regular rest.",
+        options: ["advised", "ordered", "begged", "threatened"],
+        explanation: "For medical advice, the reporting verb changes to 'advised' followed by an infinitive."
+      },
+      {
+        id: "g_nc_5",
+        category: "grammar",
+        subCategory: "g_narration",
+        topic: "Grammar: Narration Change",
+        type: "mcq",
+        question: "Change into Indirect Speech: The captain said, 'Hurrah! We have won the championship!'",
+        options: [
+          "The captain exclaimed with joy that they had won the championship.",
+          "The captain shouted that they won the championship.",
+          "The captain said with sorrow that they have won the championship.",
+          "The captain told that they would win the championship."
+        ],
+        answer: 0,
+        explanation: "'Hurrah!' expresses delight, so reporting verb changes to 'exclaimed with joy that', and present perfect changes to past perfect."
+      },
+      {
+        id: "g_nc_6",
+        category: "grammar",
+        subCategory: "g_narration",
+        topic: "Grammar: Narration Change",
+        type: "dnd",
+        sentenceBefore: "Direct: She said, 'I shall go to Kolkata tomorrow.' -> Indirect: She said that she would go to Kolkata the",
+        blankWord: "next",
+        sentenceAfter: "day.",
+        options: ["next", "yesterday", "previous", "other"],
+        explanation: "In indirect speech, time adverb 'tomorrow' shifts to 'the next day' or 'the following day'."
+      },
+      {
+        id: "g_nc_7",
+        category: "grammar",
+        subCategory: "g_narration",
+        topic: "Grammar: Narration Change",
+        type: "mcq",
+        question: "Change into Direct Speech: He requested me to give him a glass of water.",
+        options: [
+          "He said to me, 'Please give me a glass of water.'",
+          "He said to me, 'Give him a glass of water.'",
+          "He told me, 'You give me water.'",
+          "He asked me, 'Will you give me water?'"
+        ],
+        answer: 0,
+        explanation: "Indirect 'He requested me to give him...' transforms into the polite imperative direct speech: 'Please give me...'."
+      },
+
+      // -------------------------------------------------------------
+      // GRAMMAR TOPIC 7: ARTICLES AND PREPOSITIONS (7 Questions)
+      // -------------------------------------------------------------
+      {
+        id: "g_ap_1",
+        category: "grammar",
+        subCategory: "g_prep",
+        topic: "Grammar: Articles & Prepositions",
+        type: "mcq",
+        question: "Fill in the blank with the appropriate article: 'He is ______ European scholar touring West Bengal.'",
+        options: [
+          "a",
+          "an",
+          "the",
+          "no article"
+        ],
+        answer: 0, // 'a'
+        explanation: "Although 'European' begins with the vowel 'E', it produces a consonant sound /juː/ (as in 'you'), so it takes 'a'."
+      },
+      {
+        id: "g_ap_2",
+        category: "grammar",
+        subCategory: "g_prep",
+        topic: "Grammar: Articles & Prepositions",
+        type: "dnd",
+        sentenceBefore: "The honest shepherd was",
+        blankWord: "an",
+        sentenceAfter: "honorable man who lived simply in the hills.",
+        options: ["an", "a", "the", "one"],
+        explanation: "The word 'honorable' begins with a silent 'h', producing a vowel sound /ɒ/, which requires the indefinite article 'an'."
+      },
+      {
+        id: "g_ap_3",
+        category: "grammar",
+        subCategory: "g_prep",
+        topic: "Grammar: Articles & Prepositions",
+        type: "mcq",
+        question: "Choose the appropriate preposition: 'The tired boy jumped ______ the cool river to swim.'",
+        options: [
+          "into",
+          "in",
+          "on",
+          "at"
+        ],
+        answer: 0, // into
+        explanation: "'Into' expresses movement or motion from outside to inside an enclosed space or body of water."
+      },
+      {
+        id: "g_ap_4",
+        category: "grammar",
+        subCategory: "g_prep",
+        topic: "Grammar: Articles & Prepositions",
+        type: "dnd",
+        sentenceBefore: "The young students are very fond",
+        blankWord: "of",
+        sentenceAfter: "reading mystery stories.",
+        options: ["of", "to", "in", "with"],
+        explanation: "The adjective 'fond' takes the fixed appropriate preposition 'of' ('fond of')."
+      },
+      {
+        id: "g_ap_5",
+        category: "grammar",
+        subCategory: "g_prep",
+        topic: "Grammar: Articles & Prepositions",
+        type: "mcq",
+        question: "Choose the correct preposition: 'The police prevented the crowd ______ entering the danger zone.'",
+        options: [
+          "from",
+          "to",
+          "at",
+          "by"
+        ],
+        answer: 0, // from
+        explanation: "The verb 'prevent' requires the preposition 'from' followed by a gerund ('prevented from entering')."
+      },
+      {
+        id: "g_ap_6",
+        category: "grammar",
+        subCategory: "g_prep",
+        topic: "Grammar: Articles & Prepositions",
+        type: "dnd",
+        sentenceBefore: "The little girl is exceptionally good",
+        blankWord: "at",
+        sentenceAfter: "solving complex mathematics puzzles.",
+        options: ["at", "in", "on", "with"],
+        explanation: "To express skill or proficiency in a subject or activity, 'good at' is the correct prepositional idiom."
+      },
+      {
+        id: "g_ap_7",
+        category: "grammar",
+        subCategory: "g_prep",
+        topic: "Grammar: Articles & Prepositions",
+        type: "mcq",
+        question: "Choose the appropriate article & preposition: 'Subhas Chandra Bose was born ______ 23rd January, 1897.'",
+        options: [
+          "on",
+          "in",
+          "at",
+          "from"
+        ],
+        answer: 0, // on
+        explanation: "Specific calendar dates and days take the preposition 'on' ('on 23rd January')."
+      }
+    ];
+
+    /* ==========================================================================
+       2. WEB AUDIO API SYNTHESIZER (No External Files Required)
+       ========================================================================== */
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.isMuted = false;
+      }
+
+      initContext() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          if (AudioContext) {
+            this.ctx = new AudioContext();
+          }
+        }
+        if (this.ctx && this.ctx.state === 'suspended') {
+          this.ctx.resume();
+        }
+      }
+
+      playTone(freq, type = 'sine', duration = 0.2, gainVal = 0.15) {
+        if (this.isMuted) return;
+        this.initContext();
+        if (!this.ctx) return;
+
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = type;
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+
+          gain.gain.setValueAtTime(gainVal, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + duration);
+
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+
+          osc.start();
+          osc.stop(this.ctx.currentTime + duration);
+        } catch (e) {
+          console.warn("Audio play error", e);
+        }
+      }
+
+      playSuccess() {
+        if (this.isMuted) return;
+        this.initContext();
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        notes.forEach((freq, idx) => {
+          setTimeout(() => {
+            this.playTone(freq, 'triangle', 0.25, 0.18);
+          }, idx * 60);
+        });
+      }
+
+      playWrong() {
+        if (this.isMuted) return;
+        this.initContext();
+        this.playTone(180, 'sawtooth', 0.25, 0.2);
+        setTimeout(() => {
+          this.playTone(140, 'sawtooth', 0.3, 0.18);
+        }, 100);
+      }
+
+      playFlip() {
+        if (this.isMuted) return;
+        this.initContext();
+        this.playTone(350, 'sine', 0.12, 0.1);
+        setTimeout(() => {
+          this.playTone(550, 'sine', 0.12, 0.08);
+        }, 40);
+      }
+
+      playSnap() {
+        if (this.isMuted) return;
+        this.initContext();
+        this.playTone(880, 'sine', 0.08, 0.2);
+      }
+
+      playFanfare() {
+        if (this.isMuted) return;
+        this.initContext();
+        const chord = [523.25, 659.25, 783.99, 1046.50, 1318.51];
+        chord.forEach((note, i) => {
+          setTimeout(() => {
+            this.playTone(note, 'triangle', 0.5, 0.25);
+          }, i * 90);
+        });
+      }
+    }
+
+    const sound = new SoundEngine();
+
+    /* ==========================================================================
+       3. WEB SPEECH API & VOICE COMMAND CONTROLLER
+       ========================================================================== */
+    class SpeechController {
+      constructor(app) {
+        this.app = app;
+        this.recognition = null;
+        this.isListening = false;
+        this.synth = window.speechSynthesis || null;
+        this.lang = localStorage.getItem('wbbse_speech_lang') || 'en-IN';
+        this.apiKey = localStorage.getItem('wbbse_speech_api_key') || '';
+        this.lastCommandTime = 0;
+        this.restartTimer = null;
+        this.hasSpeechSupport = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
+        this.initRecognition();
+      }
+
+      initRecognition() {
+        const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+        if (!SpeechRec) {
+          console.warn("Web Speech API not supported on this browser.");
+          this.updateUiState(false, "Web Speech API not supported in this browser. Use Chrome, Edge, or the quick buttons.");
+          return;
+        }
+
+        try {
+          this.recognition = new SpeechRec();
+          this.recognition.continuous = true;
+          this.recognition.interimResults = true; // INSTANT real-time recognition without latency
+          this.recognition.maxAlternatives = 3;
+          this.recognition.lang = this.lang;
+
+          this.recognition.onstart = () => {
+            this.isListening = true;
+            this.updateUiState(true, 'Listening... Say "Option A", "Next", "Flip", or the answer word');
+          };
+
+          this.recognition.onresult = (event) => {
+            let interimTranscript = '';
+            let finalTranscript = '';
+
+            for (let i = event.resultIndex; i < event.results.length; ++i) {
+              const res = event.results[i];
+              const text = res[0].transcript;
+              if (res.isFinal) {
+                finalTranscript += text;
+              } else {
+                interimTranscript += text;
+              }
+            }
+
+            const activeText = (finalTranscript || interimTranscript).trim().toLowerCase();
+            if (activeText) {
+              this.showLiveTranscript(activeText);
+              this.handleCommand(activeText);
+            }
+          };
+
+          this.recognition.onerror = (err) => {
+            console.warn("Speech recognition notice:", err.error);
+            if (err.error === 'not-allowed' || err.error === 'service-not-allowed') {
+              this.isListening = false;
+              this.updateUiState(false, '⚠️ Mic permission not granted. (If using file://, Chrome may require localhost or permission in settings. Quick chips below work anytime!)');
+            } else if (err.error === 'network') {
+              this.isListening = false;
+              this.updateUiState(false, '⚠️ Network error in Speech API. Quick command chips below work 100%!');
+            } else if (err.error !== 'no-speech') {
+              this.updateUiState(this.isListening, `Notice: ${err.error}. Still ready.`);
+            }
+          };
+
+          this.recognition.onend = () => {
+            if (this.isListening) {
+              clearTimeout(this.restartTimer);
+              this.restartTimer = setTimeout(() => {
+                if (this.isListening && this.recognition) {
+                  try {
+                    this.recognition.start();
+                  } catch (e) {
+                    console.log("Speech restart caught:", e.message);
+                  }
+                }
+              }, 300);
+            } else {
+              this.updateUiState(false, 'Mic paused. Click mic to listen again, or click quick chips.');
+            }
+          };
+        } catch (e) {
+          console.error("Failed to initialize SpeechRec:", e);
+        }
+      }
+
+      toggleListening() {
+        if (!this.hasSpeechSupport) {
+          alert("Web Speech recognition is not supported in this browser. Please try Google Chrome, Microsoft Edge, or Safari.");
+          return;
+        }
+
+        sound.initContext();
+        if (this.isListening) {
+          this.stop();
+        } else {
+          this.start();
+        }
+      }
+
+      start() {
+        sound.initContext();
+        if (this.recognition) {
+          try {
+            this.recognition.lang = this.lang;
+            this.recognition.start();
+            this.isListening = true;
+            this.updateUiState(true, "Connecting microphone...");
+            sound.playSnap();
+          } catch (e) {
+            console.warn("Speech start exception:", e);
+            if (e.name === 'InvalidStateError') {
+              this.isListening = true;
+              this.updateUiState(true, "Listening...");
+            }
+          }
+        }
+      }
+
+      stop() {
+        this.isListening = false;
+        clearTimeout(this.restartTimer);
+        if (this.recognition) {
+          try {
+            this.recognition.stop();
+          } catch (e) {}
+        }
+        this.updateUiState(false, "Microphone paused. Click mic or use quick chips below.");
+        sound.playSnap();
+      }
+
+      updateUiState(active, message) {
+        const pulse = document.getElementById('micPulse');
+        const micIcon = document.getElementById('micIcon');
+        const pulseRing = document.getElementById('voicePulseRing');
+        const dot = document.getElementById('voiceDot');
+        const statusTitle = document.getElementById('voiceStatusTitle');
+        const statusText = document.getElementById('voiceStatusText');
+
+        if (active) {
+          if (pulse) pulse.classList.remove('hidden');
+          if (micIcon) micIcon.classList.add('text-red-500');
+          if (pulseRing) pulseRing.classList.remove('hidden');
+          if (dot) {
+            dot.classList.remove('bg-slate-400', 'bg-amber-400', 'bg-emerald-400');
+            dot.classList.add('bg-red-500');
+          }
+          if (statusTitle) statusTitle.textContent = "Listening Live:";
+        } else {
+          if (pulse) pulse.classList.add('hidden');
+          if (micIcon) micIcon.classList.remove('text-red-500');
+          if (pulseRing) pulseRing.classList.add('hidden');
+          if (dot) {
+            dot.classList.remove('bg-red-500');
+            dot.classList.add('bg-emerald-400');
+          }
+          if (statusTitle) statusTitle.textContent = "Voice Ready:";
+        }
+
+        if (statusText && message) {
+          statusText.textContent = message;
+        }
+      }
+
+      showLiveTranscript(transcript) {
+        const statusText = document.getElementById('voiceStatusText');
+        if (statusText) {
+          statusText.innerHTML = `Heard: <b class="text-white underline decoration-sky-400">"${transcript}"</b>`;
+        }
+      }
+
+      handleCommand(cmd) {
+        if (!cmd) return;
+        const now = Date.now();
+        if (now - this.lastCommandTime < 400) return;
+
+        const clean = cmd.trim().toLowerCase();
+
+        // 1. Check for option letters & numbers
+        const optA = /\b(option a|choice a|select a|answer a|option 1|number 1|first option|first choice|^a$|^ay$|^hey$|^one$)\b/i;
+        const optB = /\b(option b|choice b|select b|answer b|option 2|number 2|second option|second choice|^b$|^bee$|^be$|^two$)\b/i;
+        const optC = /\b(option c|choice c|select c|answer c|option 3|number 3|third option|third choice|^c$|^see$|^sea$|^si$|^three$)\b/i;
+        const optD = /\b(option d|choice d|select d|answer d|option 4|number 4|fourth option|fourth choice|^d$|^dee$|^the$|^four$)\b/i;
+
+        if (optA.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Selected Option A");
+          this.app.selectOptionByIndex(0);
+          return;
+        }
+        if (optB.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Selected Option B");
+          this.app.selectOptionByIndex(1);
+          return;
+        }
+        if (optC.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Selected Option C");
+          this.app.selectOptionByIndex(2);
+          return;
+        }
+        if (optD.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Selected Option D");
+          this.app.selectOptionByIndex(3);
+          return;
+        }
+
+        // 2. Navigation
+        if (/\b(next|forward|continue|skip|proceed|go next)\b/i.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Navigating Next ➔");
+          this.app.nextQuestion();
+          return;
+        }
+        if (/\b(previous|prev|back|go back|before)\b/i.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Navigating Previous ⬅");
+          this.app.prevQuestion();
+          return;
+        }
+
+        // 3. Flip Card
+        if (/\b(flip|turn|reverse|notes|explanation|details)\b/i.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Flipping Flashcard 🔄");
+          this.app.flipCard();
+          return;
+        }
+
+        // 4. Theme Toggle
+        if (/\b(theme|dark|light|mode|toggle theme|night|day)\b/i.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Switching Theme ☀️/🌙");
+          this.app.toggleTheme();
+          return;
+        }
+
+        // 5. Speech Audio / Read Question
+        if (/\b(read|speak|listen|hear|audio|sound out)\b/i.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Reading Question 🔊");
+          this.speakCurrentQuestion();
+          return;
+        }
+
+        // 6. Sound Toggle
+        if (/\b(mute|unmute|sound off|sound on)\b/i.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Toggling Sound 🔔");
+          this.app.toggleSound();
+          return;
+        }
+
+        // 7. Shuffle & Reset
+        if (/\b(shuffle|random|mix)\b/i.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Shuffled Questions 🔀");
+          this.app.shuffleQuestions();
+          return;
+        }
+        if (/\b(reset|restart|start over)\b/i.test(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback("Restarting Session 🔄");
+          this.app.restart();
+          return;
+        }
+
+        // 8. Direct word matching against question options
+        if (this.app.selectOptionByWord(clean)) {
+          this.lastCommandTime = now;
+          this.flashFeedback(`Matched Option: "${clean}" ✅`);
+        }
+      }
+
+      flashFeedback(text) {
+        const statusText = document.getElementById('voiceStatusText');
+        if (statusText) {
+          statusText.innerHTML = `<span class="bg-white text-indigo-900 font-extrabold px-2 py-0.5 rounded-md shadow animate-pulse">${text}</span>`;
+        }
+      }
+
+      speakCurrentQuestion() {
+        if (!this.synth) return;
+        this.synth.cancel();
+
+        const q = this.app.getCurrentQuestion();
+        if (!q) return;
+
+        let textToRead = "";
+        if (q.type === 'mcq') {
+          textToRead = `Question: ${q.question}. Option A: ${q.options[0]}. Option B: ${q.options[1]}. Option C: ${q.options[2]}. Option D: ${q.options[3]}.`;
+        } else {
+          textToRead = `Fill in the blank: ${q.sentenceBefore} blank ${q.sentenceAfter}. Options are: ${q.options.join(', ')}.`;
+        }
+
+        const utterance = new SpeechSynthesisUtterance(textToRead);
+        utterance.lang = this.lang;
+        utterance.rate = 0.95;
+        this.synth.speak(utterance);
+      }
+    }
+
+    /* ==========================================================================
+       4. CONFETTI CELEBRATION ENGINE
+       ========================================================================== */
+    class Confetti {
+      constructor() {
+        this.canvas = document.getElementById('confettiCanvas');
+        this.ctx = this.canvas.getContext('2d');
+        this.particles = [];
+        this.animationId = null;
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+      }
+
+      resize() {
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+      }
+
+      start() {
+        this.particles = [];
+        const colors = ['#38bdf8', '#818cf8', '#34d399', '#f472b6', '#fbbf24', '#a78bfa'];
+        for (let i = 0; i < 90; i++) {
+          this.particles.push({
+            x: Math.random() * this.canvas.width,
+            y: -10 - Math.random() * 200,
+            size: Math.random() * 7 + 4,
+            speedY: Math.random() * 4 + 3,
+            speedX: Math.random() * 4 - 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 10 - 5
+          });
+        }
+        if (!this.animationId) {
+          this.loop();
+        }
+      }
+
+      loop() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        let activeParticles = 0;
+
+        for (let p of this.particles) {
+          p.y += p.speedY;
+          p.x += p.speedX;
+          p.rotation += p.rotationSpeed;
+
+          if (p.y < this.canvas.height + 20) {
+            activeParticles++;
+            this.ctx.save();
+            this.ctx.translate(p.x, p.y);
+            this.ctx.rotate((p.rotation * Math.PI) / 180);
+            this.ctx.fillStyle = p.color;
+            this.ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            this.ctx.restore();
+          }
+        }
+
+        if (activeParticles > 0) {
+          this.animationId = requestAnimationFrame(() => this.loop());
+        } else {
+          this.animationId = null;
+          this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        }
+      }
+    }
+
+    /* ==========================================================================
+       5. MAIN APPLICATION CONTROLLER
+       ========================================================================== */
+    class WbbseStudyHub {
+      constructor() {
+        this.allQuestions = [...QUESTION_BANK];
+        this.activeFilter = 'all';
+        this.activeFormat = 'all';
+        this.filteredQuestions = [];
+        this.currentIndex = 0;
+        this.isCardFlipped = false;
+        
+        this.score = 0;
+        this.attempted = 0;
+        this.currentStreak = 0;
+        this.bestStreak = 0;
+        this.userAnswers = {};
+
+        this.speech = new SpeechController(this);
+        this.confetti = new Confetti();
+        this.draggedOption = null;
+
+        this.init();
+      }
+
+      init() {
+        this.initTheme();
+        this.applyFilters();
+        this.bindEvents();
+        this.renderCurrentQuestion();
+      }
+
+      initTheme() {
+        const savedTheme = localStorage.getItem('wbbse_theme');
+        if (savedTheme === 'light') {
+          document.documentElement.classList.remove('dark');
+        } else {
+          document.documentElement.classList.add('dark');
+        }
+      }
+
+      toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('wbbse_theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('wbbse_theme', 'dark');
+        }
+        sound.playSnap();
+      }
+
+      toggleSound() {
+        sound.isMuted = !sound.isMuted;
+        const onIcon = document.getElementById('soundOnIcon');
+        const offIcon = document.getElementById('soundOffIcon');
+        if (sound.isMuted) {
+          onIcon.classList.add('hidden');
+          offIcon.classList.remove('hidden');
+        } else {
+          onIcon.classList.remove('hidden');
+          offIcon.classList.add('hidden');
+          sound.playSnap();
+        }
+      }
+
+      applyFilters() {
+        const searchVal = document.getElementById('searchInput').value.trim().toLowerCase();
+
+        this.filteredQuestions = this.allQuestions.filter(q => {
+          let matchesCategory = true;
+          if (this.activeFilter === 'all') {
+            matchesCategory = true;
+          } else if (this.activeFilter === 'grammar') {
+            matchesCategory = q.category === 'grammar';
+          } else if (this.activeFilter.startsWith('g_')) {
+            matchesCategory = q.subCategory === this.activeFilter;
+          } else {
+            matchesCategory = q.category === this.activeFilter;
+          }
+
+          let matchesFormat = true;
+          if (this.activeFormat === 'mcq') matchesFormat = q.type === 'mcq';
+          if (this.activeFormat === 'dnd') matchesFormat = q.type === 'dnd';
+
+          let matchesSearch = true;
+          if (searchVal) {
+            const haystack = `${q.topic} ${q.question || ''} ${q.sentenceBefore || ''} ${q.blankWord || ''} ${q.sentenceAfter || ''} ${q.explanation || ''}`.toLowerCase();
+            matchesSearch = haystack.includes(searchVal);
+          }
+
+          return matchesCategory && matchesFormat && matchesSearch;
+        });
+
+        this.currentIndex = 0;
+        this.updateQuestionNavigator();
+        this.updateStatsUi();
+      }
+
+      updateQuestionNavigator() {
+        const select = document.getElementById('questionJumpSelect');
+        select.innerHTML = '';
+
+        if (this.filteredQuestions.length === 0) {
+          const opt = document.createElement('option');
+          opt.textContent = "No matches";
+          select.appendChild(opt);
+          return;
+        }
+
+        this.filteredQuestions.forEach((q, idx) => {
+          const opt = document.createElement('option');
+          opt.value = idx;
+          const status = this.userAnswers[q.id] 
+            ? (this.userAnswers[q.id].correct ? '✅ ' : '❌ ') 
+            : `${idx + 1}. `;
+          opt.textContent = `${status} ${q.topic.split(':')[1] || q.topic} (${q.type.toUpperCase()})`;
+          select.appendChild(opt);
+        });
+
+        select.value = this.currentIndex;
+      }
+
+      shuffleQuestions() {
+        for (let i = this.filteredQuestions.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [this.filteredQuestions[i], this.filteredQuestions[j]] = [this.filteredQuestions[j], this.filteredQuestions[i]];
+        }
+        this.currentIndex = 0;
+        this.updateQuestionNavigator();
+        this.renderCurrentQuestion();
+        sound.playFlip();
+      }
+
+      getCurrentQuestion() {
+        return this.filteredQuestions[this.currentIndex] || null;
+      }
+
+      renderCurrentQuestion() {
+        this.isCardFlipped = false;
+        const innerCard = document.getElementById('cardInner');
+        if (innerCard) innerCard.classList.remove('rotate-y-180');
+
+        const q = this.getCurrentQuestion();
+        const mcqBox = document.getElementById('flashcardMcqContainer');
+        const dndBox = document.getElementById('dragDropContainer');
+        const badge = document.getElementById('questionCountBadge');
+
+        badge.textContent = `Question ${this.filteredQuestions.length ? this.currentIndex + 1 : 0} of ${this.filteredQuestions.length}`;
+
+        if (!q) {
+          mcqBox.classList.remove('hidden');
+          dndBox.classList.add('hidden');
+          document.getElementById('fcQuestionText').textContent = "No questions found matching your filter.";
+          document.getElementById('fcOptionsGrid').innerHTML = "";
+          return;
+        }
+
+        const pct = Math.round(((this.currentIndex + 1) / this.filteredQuestions.length) * 100);
+        document.getElementById('progressBar').style.width = `${pct}%`;
+
+        const jumpSelect = document.getElementById('questionJumpSelect');
+        if (jumpSelect) jumpSelect.value = this.currentIndex;
+
+        if (q.type === 'mcq') {
+          mcqBox.classList.remove('hidden');
+          dndBox.classList.add('hidden');
+          this.renderMcqCard(q);
+        } else if (q.type === 'dnd') {
+          mcqBox.classList.add('hidden');
+          dndBox.classList.remove('hidden');
+          this.renderDragAndDropCard(q);
+        }
+      }
+
+      renderMcqCard(q) {
+        document.getElementById('fcTopicBadge').textContent = q.topic;
+        document.getElementById('fcQuestionNumber').textContent = `Question ${this.currentIndex + 1} of ${this.filteredQuestions.length}`;
+        document.getElementById('fcQuestionText').textContent = q.question;
+
+        const grid = document.getElementById('fcOptionsGrid');
+        grid.innerHTML = '';
+
+        const answeredState = this.userAnswers[q.id];
+        const letters = ['A', 'B', 'C', 'D'];
+
+        q.options.forEach((optText, idx) => {
+          const btn = document.createElement('button');
+          btn.className = "w-full text-left p-4 rounded-2xl border transition-all duration-200 flex items-start gap-3 relative group ";
+
+          if (!answeredState) {
+            btn.className += "bg-slate-50 hover:bg-sky-50/70 dark:bg-slate-800/60 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-700/80 hover:border-sky-400 dark:hover:border-sky-500 text-slate-800 dark:text-slate-200";
+            btn.onclick = () => this.selectOptionByIndex(idx);
+          } else {
+            if (idx === q.answer) {
+              btn.className += "bg-emerald-50 dark:bg-emerald-950/50 border-emerald-500 text-emerald-900 dark:text-emerald-200 font-semibold ring-2 ring-emerald-500/20";
+            } else if (idx === answeredState.selected && !answeredState.correct) {
+              btn.className += "bg-rose-50 dark:bg-rose-950/50 border-rose-500 text-rose-900 dark:text-rose-200 font-medium";
+            } else {
+              btn.className += "bg-slate-50 dark:bg-slate-800/40 border-slate-200 dark:border-slate-800 opacity-50 text-slate-500";
+            }
+          }
+
+          btn.innerHTML = `
+            <span class="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold shrink-0 ${answeredState && idx === q.answer ? 'bg-emerald-500 text-white' : (answeredState && idx === answeredState.selected ? 'bg-rose-500 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300')}">
+              ${letters[idx]}
+            </span>
+            <span class="text-sm font-medium leading-tight pt-0.5">${optText}</span>
+          `;
+
+          grid.appendChild(btn);
+        });
+
+        const statusHint = document.getElementById('fcStatusHint');
+        if (answeredState) {
+          statusHint.innerHTML = answeredState.correct 
+            ? `<span class="text-emerald-600 dark:text-emerald-400 font-bold">✓ Correct! Click "Flip" to see notes</span>` 
+            : `<span class="text-rose-500 font-bold">✗ Incorrect. Correct answer was [${letters[q.answer]}]</span>`;
+        } else {
+          statusHint.textContent = "Select an option";
+        }
+
+        document.getElementById('fcBackCorrectText').textContent = `[Option ${letters[q.answer]}] ${q.options[q.answer]}`;
+        document.getElementById('fcBackExplanation').textContent = q.explanation;
+      }
+
+      selectOptionByIndex(idx) {
+        const q = this.getCurrentQuestion();
+        if (!q || this.userAnswers[q.id]) return;
+
+        if (q.type === 'mcq') {
+          const isCorrect = (idx === q.answer);
+
+          this.attempted++;
+          if (isCorrect) {
+            this.score++;
+            this.currentStreak++;
+            if (this.currentStreak > this.bestStreak) this.bestStreak = this.currentStreak;
+            sound.playSuccess();
+            if (this.currentStreak > 0 && this.currentStreak % 5 === 0) {
+              this.confetti.start();
+            }
+          } else {
+            this.currentStreak = 0;
+            sound.playWrong();
+            const cardFace = document.querySelector('.card-face');
+            if (cardFace) {
+              cardFace.classList.add('animate-shake');
+              setTimeout(() => cardFace.classList.remove('animate-shake'), 600);
+            }
+          }
+
+          this.userAnswers[q.id] = {
+            answered: true,
+            correct: isCorrect,
+            selected: idx
+          };
+
+          this.updateStatsUi();
+          this.renderMcqCard(q);
+          this.updateQuestionNavigator();
+
+          if (this.attempted === this.filteredQuestions.length) {
+            setTimeout(() => this.showResultsModal(), 1200);
+          }
+        } else if (q.type === 'dnd') {
+          if (idx >= 0 && idx < q.options.length) {
+            this.handleDropAnswer(q.options[idx]);
+          }
+        }
+      }
+
+      selectOptionByWord(word) {
+        const q = this.getCurrentQuestion();
+        if (!q || this.userAnswers[q.id]) return false;
+        const target = word.trim().toLowerCase();
+
+        if (q.type === 'dnd') {
+          const matchedWord = q.options.find(opt => {
+            const o = opt.toLowerCase();
+            return o === target || target.includes(o) || o.includes(target);
+          });
+          if (matchedWord) {
+            this.handleDropAnswer(matchedWord);
+            return true;
+          }
+        } else if (q.type === 'mcq') {
+          const matchIdx = q.options.findIndex(opt => {
+            const o = opt.toLowerCase();
+            return o === target || target.includes(o) || o.includes(target);
+          });
+          if (matchIdx !== -1) {
+            this.selectOptionByIndex(matchIdx);
+            return true;
+          }
+        }
+        return false;
+      }
+
+      flipCard() {
+        const q = this.getCurrentQuestion();
+        if (!q || q.type !== 'mcq') return;
+
+        this.isCardFlipped = !this.isCardFlipped;
+        const innerCard = document.getElementById('cardInner');
+        if (this.isCardFlipped) {
+          innerCard.classList.add('rotate-y-180');
+        } else {
+          innerCard.classList.remove('rotate-y-180');
+        }
+        sound.playFlip();
+      }
+
+      renderDragAndDropCard(q) {
+        document.getElementById('dndTopicBadge').textContent = q.topic;
+        document.getElementById('dndQuestionNumber').textContent = `Drag & Drop ${this.currentIndex + 1} of ${this.filteredQuestions.length}`;
+        document.getElementById('dndTextBefore').textContent = q.sentenceBefore;
+        document.getElementById('dndTextAfter').textContent = q.sentenceAfter;
+
+        const dropZone = document.getElementById('dropZone');
+        const wordBlocksContainer = document.getElementById('dndWordBlocks');
+        const resultBox = document.getElementById('dndResultBox');
+        const nextBtn = document.getElementById('dndNextBtn');
+
+        const state = this.userAnswers[q.id];
+
+        dropZone.className = "inline-flex items-center justify-center min-w-[150px] min-h-[46px] px-4 py-1.5 rounded-xl border-2 border-dashed transition-all text-base duration-200 ";
+
+        if (!state) {
+          dropZone.className += "border-sky-400 dark:border-sky-500 bg-sky-50/50 dark:bg-sky-950/30 text-sky-600 dark:text-sky-300 font-bold";
+          dropZone.innerHTML = `<span id="dropZonePlaceholder" class="text-xs font-semibold tracking-wider uppercase opacity-75">⬇ Drop Block Here</span>`;
+          resultBox.classList.add('hidden');
+          nextBtn.disabled = false;
+        } else {
+          if (state.correct) {
+            dropZone.className += "border-emerald-500 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-300 font-extrabold shadow-sm";
+            dropZone.innerHTML = `<span>✓ ${state.selected}</span>`;
+            this.showDndResult(true, q.explanation);
+          } else {
+            dropZone.className += "border-rose-500 bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-300 font-extrabold shadow-sm";
+            dropZone.innerHTML = `<span>✗ ${state.selected}</span>`;
+            this.showDndResult(false, q.explanation, q.blankWord);
+          }
+          nextBtn.disabled = false;
+        }
+
+        wordBlocksContainer.innerHTML = '';
+        q.options.forEach((word) => {
+          const block = document.createElement('div');
+          block.draggable = !state;
+          block.className = "cursor-grab active:cursor-grabbing p-3 rounded-xl border transition-all text-center font-bold text-sm select-none shadow-sm flex items-center justify-center gap-2 ";
+
+          if (!state) {
+            block.className += "bg-white hover:bg-sky-50 dark:bg-slate-800 dark:hover:bg-slate-750 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-100 hover:border-sky-400 hover:scale-105 active:scale-95";
+            
+            block.ondragstart = (e) => {
+              this.draggedOption = word;
+              e.dataTransfer.setData('text/plain', word);
+              block.classList.add('opacity-40');
+            };
+            block.ondragend = () => {
+              block.classList.remove('opacity-40');
+            };
+
+            block.onclick = () => {
+              this.handleDropAnswer(word);
+            };
+          } else {
+            if (word === q.blankWord) {
+              block.className += "bg-emerald-50 dark:bg-emerald-950/50 border-emerald-500 text-emerald-700 dark:text-emerald-300";
+            } else {
+              block.className += "bg-slate-100 dark:bg-slate-850 border-slate-200 dark:border-slate-800 opacity-40 text-slate-400";
+            }
+          }
+
+          block.innerHTML = `
+            <svg class="w-3.5 h-3.5 text-slate-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+            </svg>
+            <span>${word}</span>
+          `;
+
+          wordBlocksContainer.appendChild(block);
+        });
+
+        if (!state) {
+          dropZone.ondragover = (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over-active');
+          };
+          dropZone.ondragleave = () => {
+            dropZone.classList.remove('drag-over-active');
+          };
+          dropZone.ondrop = (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over-active');
+            const droppedWord = e.dataTransfer.getData('text/plain') || this.draggedOption;
+            if (droppedWord) {
+              this.handleDropAnswer(droppedWord);
+            }
+          };
+        }
+      }
+
+      handleDropAnswer(selectedWord) {
+        const q = this.getCurrentQuestion();
+        if (!q || q.type !== 'dnd') return;
+        if (this.userAnswers[q.id]) return;
+
+        sound.playSnap();
+        const isCorrect = (selectedWord.trim().toLowerCase() === q.blankWord.trim().toLowerCase());
+
+        this.attempted++;
+        if (isCorrect) {
+          this.score++;
+          this.currentStreak++;
+          if (this.currentStreak > this.bestStreak) this.bestStreak = this.currentStreak;
+          sound.playSuccess();
+          if (this.currentStreak > 0 && this.currentStreak % 5 === 0) {
+            this.confetti.start();
+          }
+        } else {
+          this.currentStreak = 0;
+          sound.playWrong();
+          const dndBox = document.getElementById('dragDropContainer');
+          if (dndBox) {
+            dndBox.classList.add('animate-shake');
+            setTimeout(() => dndBox.classList.remove('animate-shake'), 600);
+          }
+        }
+
+        this.userAnswers[q.id] = {
+          answered: true,
+          correct: isCorrect,
+          selected: selectedWord
+        };
+
+        this.updateStatsUi();
+        this.renderDragAndDropCard(q);
+        this.updateQuestionNavigator();
+
+        if (this.attempted === this.filteredQuestions.length) {
+          setTimeout(() => this.showResultsModal(), 1200);
+        }
+      }
+
+      showDndResult(isCorrect, explanation, rightAnswer = '') {
+        const box = document.getElementById('dndResultBox');
+        const icon = document.getElementById('dndResultIcon');
+        const title = document.getElementById('dndResultTitle');
+        const exp = document.getElementById('dndResultExplanation');
+
+        box.classList.remove('hidden', 'bg-emerald-50', 'dark:bg-emerald-950/40', 'border-emerald-200', 'bg-rose-50', 'dark:bg-rose-950/40', 'border-rose-200');
+
+        if (isCorrect) {
+          box.classList.add('bg-emerald-50', 'dark:bg-emerald-950/40', 'border', 'border-emerald-300', 'dark:border-emerald-800');
+          icon.innerHTML = `<span class="text-emerald-600 dark:text-emerald-400 font-bold text-lg">✓</span>`;
+          title.className = "font-bold text-sm text-emerald-800 dark:text-emerald-300";
+          title.textContent = "Great job! That's correct.";
+        } else {
+          box.classList.add('bg-rose-50', 'dark:bg-rose-950/40', 'border', 'border-rose-300', 'dark:border-rose-800');
+          icon.innerHTML = `<span class="text-rose-600 dark:text-rose-400 font-bold text-lg">✗</span>`;
+          title.className = "font-bold text-sm text-rose-800 dark:text-rose-300";
+          title.textContent = `Incorrect. The correct answer is "${rightAnswer}".`;
+        }
+
+        exp.textContent = explanation;
+      }
+
+      nextQuestion() {
+        if (this.currentIndex < this.filteredQuestions.length - 1) {
+          this.currentIndex++;
+          this.renderCurrentQuestion();
+          sound.playFlip();
+        } else {
+          this.showResultsModal();
+        }
+      }
+
+      prevQuestion() {
+        if (this.currentIndex > 0) {
+          this.currentIndex--;
+          this.renderCurrentQuestion();
+          sound.playFlip();
+        }
+      }
+
+      updateStatsUi() {
+        document.getElementById('streakCount').textContent = this.currentStreak;
+        document.getElementById('scoreCount').textContent = this.score;
+        document.getElementById('totalAttempted').textContent = this.attempted;
+
+        const prevBtn = document.getElementById('prevQuestionBtn');
+        const nextBtn = document.getElementById('nextQuestionBtn');
+        if (prevBtn) prevBtn.disabled = (this.currentIndex === 0);
+        if (nextBtn) nextBtn.disabled = (this.currentIndex >= this.filteredQuestions.length - 1);
+      }
+
+      showResultsModal() {
+        sound.playFanfare();
+        this.confetti.start();
+
+        const modal = document.getElementById('resultsModal');
+        const accuracy = this.attempted > 0 ? Math.round((this.score / this.attempted) * 100) : 0;
+
+        document.getElementById('resScore').textContent = `${this.score} / ${this.attempted}`;
+        document.getElementById('resAccuracy').textContent = `${accuracy}%`;
+        document.getElementById('resStreak').textContent = this.bestStreak;
+
+        modal.classList.remove('hidden');
+      }
+
+      closeResultsModal() {
+        document.getElementById('resultsModal').classList.add('hidden');
+      }
+
+      restart() {
+        this.score = 0;
+        this.attempted = 0;
+        this.currentStreak = 0;
+        this.userAnswers = {};
+        this.currentIndex = 0;
+        this.closeResultsModal();
+        this.updateStatsUi();
+        this.updateQuestionNavigator();
+        this.renderCurrentQuestion();
+      }
+
+      bindEvents() {
+        document.getElementById('themeToggleBtn').addEventListener('click', () => this.toggleTheme());
+        document.getElementById('soundToggleBtn').addEventListener('click', () => this.toggleSound());
+        document.getElementById('voiceCommandBtn').addEventListener('click', () => this.speech.toggleListening());
+
+        const speechModal = document.getElementById('speechModal');
+        document.getElementById('speechConfigBtn').addEventListener('click', () => {
+          document.getElementById('speechApiKeyInput').value = this.speech.apiKey;
+          document.getElementById('speechLangSelect').value = this.speech.lang;
+          speechModal.classList.remove('hidden');
+        });
+        document.getElementById('closeSpeechModalBtn').addEventListener('click', () => {
+          speechModal.classList.add('hidden');
+        });
+        document.getElementById('saveSpeechSettingsBtn').addEventListener('click', () => {
+          const key = document.getElementById('speechApiKeyInput').value.trim();
+          const lang = document.getElementById('speechLangSelect').value;
+          this.speech.apiKey = key;
+          this.speech.lang = lang;
+          localStorage.setItem('wbbse_speech_api_key', key);
+          localStorage.setItem('wbbse_speech_lang', lang);
+          speechModal.classList.add('hidden');
+          sound.playSuccess();
+        });
+
+        document.querySelectorAll('.category-btn').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            document.querySelectorAll('.category-btn').forEach(b => {
+              b.classList.remove('bg-sky-600', 'text-white', 'font-bold', 'active');
+              b.classList.add('font-medium');
+            });
+            btn.classList.add('bg-sky-600', 'text-white', 'font-bold', 'active');
+            btn.classList.remove('font-medium');
+
+            this.activeFilter = btn.getAttribute('data-filter');
+            this.applyFilters();
+            this.renderCurrentQuestion();
+            sound.playSnap();
+          });
+        });
+
+        const formatBtns = [
+          { id: 'modeAll', val: 'all' },
+          { id: 'modeMcq', val: 'mcq' },
+          { id: 'modeDnd', val: 'dnd' }
+        ];
+        formatBtns.forEach(item => {
+          document.getElementById(item.id).addEventListener('click', () => {
+            formatBtns.forEach(f => {
+              const b = document.getElementById(f.id);
+              b.className = "format-btn px-3 py-1.5 rounded-lg transition text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+            });
+            document.getElementById(item.id).className = "format-btn px-3 py-1.5 rounded-lg transition bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm font-bold";
+            this.activeFormat = item.val;
+            this.applyFilters();
+            this.renderCurrentQuestion();
+            sound.playSnap();
+          });
+        });
+
+        document.getElementById('searchInput').addEventListener('input', () => {
+          this.applyFilters();
+          this.renderCurrentQuestion();
+        });
+
+        document.getElementById('shuffleBtn').addEventListener('click', () => this.shuffleQuestions());
+
+        document.getElementById('questionJumpSelect').addEventListener('change', (e) => {
+          this.currentIndex = parseInt(e.target.value, 10);
+          this.renderCurrentQuestion();
+          sound.playFlip();
+        });
+
+        document.getElementById('prevQuestionBtn').addEventListener('click', () => this.prevQuestion());
+        document.getElementById('nextQuestionBtn').addEventListener('click', () => this.nextQuestion());
+
+        document.getElementById('fcFlipBtn').addEventListener('click', () => this.flipCard());
+        document.getElementById('fcFlipBackBtn').addEventListener('click', () => this.flipCard());
+        document.getElementById('fcNextCardBtn').addEventListener('click', () => this.nextQuestion());
+        document.getElementById('fcSpeakBtn').addEventListener('click', () => this.speech.speakCurrentQuestion());
+
+        document.getElementById('dndNextBtn').addEventListener('click', () => this.nextQuestion());
+        document.getElementById('dndSpeakBtn').addEventListener('click', () => this.speech.speakCurrentQuestion());
+
+        // Voice Quick Command Chips
+        document.querySelectorAll('.voice-chip').forEach(chip => {
+          chip.addEventListener('click', () => {
+            const cmd = chip.getAttribute('data-voice-cmd');
+            if (cmd) {
+              this.speech.handleCommand(cmd);
+            }
+          });
+        });
+
+        // Voice Simulator Text Input
+        const simInput = document.getElementById('voiceSimInput');
+        if (simInput) {
+          simInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+              const val = simInput.value.trim();
+              if (val) {
+                this.speech.handleCommand(val);
+                simInput.value = '';
+              }
+            }
+          });
+        }
+
+        document.getElementById('restartQuizBtn').addEventListener('click', () => this.restart());
+        document.getElementById('closeResultsBtn').addEventListener('click', () => this.closeResultsModal());
+
+        window.addEventListener('keydown', (e) => {
+          if (['input', 'select', 'textarea'].includes(document.activeElement.tagName.toLowerCase())) {
+            return;
+          }
+
+          if (e.key === 'ArrowRight' || e.key === 'Enter') {
+            this.nextQuestion();
+          } else if (e.key === 'ArrowLeft') {
+            this.prevQuestion();
+          } else if (e.key === ' ' || e.key === 'f' || e.key === 'F') {
+            e.preventDefault();
+            this.flipCard();
+          } else if (['1', 'a', 'A'].includes(e.key)) {
+            this.selectOptionByIndex(0);
+          } else if (['2', 'b', 'B'].includes(e.key)) {
+            this.selectOptionByIndex(1);
+          } else if (['3', 'c', 'C'].includes(e.key)) {
+            this.selectOptionByIndex(2);
+          } else if (['4', 'd', 'D'].includes(e.key)) {
+            this.selectOptionByIndex(3);
+          } else if (e.key === 't' || e.key === 'T') {
+            this.toggleTheme();
+          } else if (e.key === 'm' || e.key === 'M') {
+            this.toggleSound();
+          } else if (e.key === 'v' || e.key === 'V') {
+            this.speech.toggleListening();
+          }
+        });
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      window.app = new WbbseStudyHub();
+    });
+  </script>
+</body>
+</html>
